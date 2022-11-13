@@ -1,5 +1,10 @@
 import React from 'react';
-import { getAccounts, getRFID } from '../api/services/utilsFirebase';
+import {
+  getAccounts,
+  getRFID,
+  getStatusRFID,
+  getStatusMessage
+} from '../api/services/utilsFirebase';
 // import Loading from '../components/Loading';
 
 const home = () => {
@@ -9,8 +14,8 @@ const home = () => {
         <div className="flex justify-center items-center">Home</div>
         <button
           className="btn bg-teal-400 rounded-lg p-2"
-          onClick={async () => {
-            await getAccounts().then(res => console.log(res));
+          onClick={() => {
+            getAccounts().then(res => console.log(res));
           }}
         >
           Get Accounts
@@ -22,6 +27,22 @@ const home = () => {
           }}
         >
           Read RFID
+        </button>
+        <button
+          className="btn bg-teal-400 rounded-lg p-2"
+          onClick={() => {
+            getStatusRFID().then(res => console.log(res));
+          }}
+        >
+          Read Status RFID
+        </button>
+        <button
+          className="btn bg-teal-400 rounded-lg p-2"
+          onClick={() => {
+            getStatusMessage().then(res => console.log(res));
+          }}
+        >
+          Read Status Message
         </button>
         <div>Home</div>
       </div>
