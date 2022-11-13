@@ -37,7 +37,7 @@ const Registration = () => {
 
   const [msg, setMsg] = useState('Tap your card to machine');
 
-  // detecting as user navigate to different page within and outside our website
+  // detecting as user navigate to different page within or outside our website
   // to resetting the signup mode to 0 A.K.A off
   useEffect(() => {
     getStatusRFID().then(response => {
