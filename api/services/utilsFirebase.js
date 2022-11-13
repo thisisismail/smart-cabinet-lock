@@ -1,4 +1,12 @@
-import { getDatabase, get, set, ref, child, onValue } from 'firebase/database';
+import {
+  getDatabase,
+  get,
+  set,
+  ref,
+  child,
+  onValue,
+  once
+} from 'firebase/database';
 import {
   getAuth,
   signInAnonymously,
@@ -13,23 +21,23 @@ const dataDb = getDatabase(app);
 // get database path within firebase project
 const dbRef = ref(dataDb);
 
-const getAccounts = async () => {
-  once(child(dbRef, 'users/'), snapshot => {
-    const data = snapshot.val();
-    console.log(data);
-  });
-};
-
 // const getAccounts = async () => {
-//   return get(child(dbRef, 'users/'))
-//     .then(snapshot => {
-//       return snapshot.val();
-//     })
-//     .catch(error => {
-//       console.log(error);
-//       return error;
-//     });
+//   once(child(dbRef, 'users/'), snapshot => {
+//     const data = snapshot.val();
+//     console.log(data);
+//   });
 // };
+
+const getAccounts = async () => {
+  return get(child(dbRef, 'users/'))
+    .then(snapshot => {
+      return snapshot.val();
+    })
+    .catch(error => {
+      console.log(error);
+      return error;
+    });
+};
 
 const addAccount = userObj => {
   // don't forget to use return since we want to use [.then] method later
