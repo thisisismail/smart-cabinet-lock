@@ -14,10 +14,9 @@ const dataDb = getDatabase(app);
 const dbRef = ref(dataDb);
 
 const getAccounts = async () => {
-  return onValue(child(dbRef, 'users/'), snapshot => {
+  onValue(child(dbRef, 'users/'), snapshot => {
     const data = snapshot.val();
     console.log(data);
-    return data;
   });
 };
 
