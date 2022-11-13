@@ -2,6 +2,15 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/',
+  //       destination: '/home',
+  //       permanent: true
+  //     }
+  //   ];
+  // },
   env: {
     apiKey: 'AIzaSyAXM39cqFGaeTtAMiePxRw9L8RPZTqVf2Y',
     authDomain: 'smart-cabinet-747fd.firebaseapp.com',

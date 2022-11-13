@@ -3,8 +3,7 @@ import StudentsData from '../components/StudentsData';
 // import LoadingStudentsData from '../components/loadings/LoadingStudentsData';
 import Loading from '../components/Loading';
 
-const ourUrl =
-  'https://smart-cabinet-747fd-default-rtdb.asia-southeast1.firebasedatabase.app/users.json';
+const ourUrl = `${process.env.databaseURL}/users.json`;
 
 // Don't forget to use return for each level to get the value inside
 const fetcher = async url => {

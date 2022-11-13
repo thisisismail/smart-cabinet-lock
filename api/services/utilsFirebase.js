@@ -1,12 +1,4 @@
-import {
-  getDatabase,
-  get,
-  set,
-  ref,
-  child,
-  onValue,
-  once
-} from 'firebase/database';
+import { getDatabase, get, set, ref, child } from 'firebase/database';
 import {
   getAuth,
   signInAnonymously,
@@ -20,13 +12,6 @@ import { app } from '../config/configFirebase';
 const dataDb = getDatabase(app);
 // get database path within firebase project
 const dbRef = ref(dataDb);
-
-// const getAccounts = async () => {
-//   once(child(dbRef, 'users/'), snapshot => {
-//     const data = snapshot.val();
-//     console.log(data);
-//   });
-// };
 
 const getAccounts = async () => {
   return get(child(dbRef, 'users/'))
