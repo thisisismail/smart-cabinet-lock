@@ -1,4 +1,4 @@
-import React, { createContext, useContex, useState } from 'react';
+import React from 'react';
 import NavBar from './NavBar';
 
 // // create global variable provider using react context

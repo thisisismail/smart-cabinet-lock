@@ -1,6 +1,6 @@
 import React from 'react';
-import { getAccounts, getRFID } from '../api/services/utilsFirebase';
-import Loading from '../components/Loading';
+// import { getAccounts, getRFID } from '../api/services/utilsFirebase';
+// import Loading from '../components/Loading';
 
 const home = () => {
   return (

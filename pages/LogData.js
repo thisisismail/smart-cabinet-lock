@@ -1,6 +1,6 @@
 import useSWR from 'swr';
 import StudentsData from '../components/StudentsData';
-import LoadingStudentsData from '../components/loadings/LoadingStudentsData';
+// import LoadingStudentsData from '../components/loadings/LoadingStudentsData';
 import Loading from '../components/Loading';
 
 const ourUrl =
