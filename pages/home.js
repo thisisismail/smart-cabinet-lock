@@ -15,7 +15,7 @@ const home = () => {
         <button
           className="btn bg-teal-400 rounded-lg p-2"
           onClick={() => {
-            getAccounts().then(response => console.log(response));
+            getAccounts();
           }}
         >
           Get Accounts
