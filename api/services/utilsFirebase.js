@@ -26,10 +26,10 @@ const getAccounts = async () => {
 
 const addAccount = userObj => {
   // don't forget to use return since we want to use [.then] method later
-  return set(ref(dataDb, 'users/' + userObj.rfid), userObj);
-  // .then(() => setStatusRegister(1))
-  // .then(() => setStatusRFID(0))
-  // .then(() => setRFID(0));
+  return set(ref(dataDb, 'users/' + userObj.rfid), userObj)
+    .then(() => setStatusRegister(1))
+    .then(() => setStatusRFID(0))
+    .then(() => setRFID(0));
 };
 
 const setRFID = val => {
