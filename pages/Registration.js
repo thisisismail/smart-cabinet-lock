@@ -148,7 +148,7 @@ const Registration = () => {
             <Button
               disabled={Object.values(user).some(x => x === null || x === '')}
               onClick={() => {
-                addAccount(user).then(() => router.push('/LogData'));
+                addAccount(user);
               }}
             >
               Daftar
