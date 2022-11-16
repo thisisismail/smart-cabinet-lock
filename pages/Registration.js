@@ -54,7 +54,7 @@ const Registration = () => {
     const exitingFunction = url => {
       // prevent function to be executed, as user navigate to the same page
       if (url !== pathname) {
-        console.log('exiting...');
+        console.log('exiting registration page...');
         signupMode(0);
         setRFID(0);
         setStatusRFID(0);
@@ -96,12 +96,10 @@ const Registration = () => {
     const name = e.target.name;
     const value = e.target.value;
     setUser(values => ({ ...values, [name]: value }));
-    console.log(user);
   };
 
   const showPassword = () => {
     setShowpwd(!showpwd);
-    console.log('change');
   };
 
   const pwdIconAttr = {
