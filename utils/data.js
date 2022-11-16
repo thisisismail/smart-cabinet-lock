@@ -3,10 +3,6 @@ const navLinks = [
     name: 'Home',
     path: '/'
   },
-  // {
-  //   name: 'Catatan Akses',
-  //   path: '/Logaccess'
-  // },
   {
     name: 'Daftar',
     path: '/Registration'
@@ -30,17 +26,19 @@ const formInputs = [
   {
     label: 'NPM',
     name: 'npm',
-    type: 'number'
+    type: 'text'
   },
   {
     label: 'Jurusan',
     name: 'major',
-    type: 'text'
+    type: 'text',
+    options: ['Teknik Elektro', 'Teknik Komputer', 'Teknik Biomedik']
   },
   {
     label: 'Angkatan',
     name: 'year',
-    type: 'number'
+    type: 'number',
+    options: ['2019', '2020', '2021', '2022']
   },
   {
     label: 'Laboratorium',

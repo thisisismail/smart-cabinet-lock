@@ -7,8 +7,6 @@ import {
   Button,
   Typography,
   Input
-  // Select,
-  // Option
 } from '@material-tailwind/react';
 import {
   addAccount,
@@ -19,6 +17,7 @@ import {
   getRFID
 } from '../api/services/utilsFirebase';
 import { formInputs } from '../utils/data';
+import SelectInput from '../components/SelectInput';
 
 const Registration = () => {
   const router = useRouter();
@@ -97,6 +96,7 @@ const Registration = () => {
     const name = e.target.name;
     const value = e.target.value;
     setUser(values => ({ ...values, [name]: value }));
+    console.log(user);
   };
 
   const showPassword = () => {
@@ -113,26 +113,34 @@ const Registration = () => {
 
   const InputsForm = formInputs.map(input => (
     <div key={input.label} className="flex flex-row items-center">
-      <Input
-        // don't use user.input.name as it will
-        // be considered as nested Object name under input under user
-        // there is no such thing as user.input
-        // we can't access other attributes value directly by calling them
-        value={user[input.name]}
-        label={input.name !== 'rfid' ? input.label : msg}
-        name={input.name}
-        onChange={inputHandler}
-        size="lg"
-        disabled={input.name !== 'rfid' ? false : true}
-        type={input.type ? input.type : showpwd ? 'text' : 'password'}
-        icon={
-          input.type ? null : showpwd ? (
-            <BiHide {...pwdIconAttr} />
-          ) : (
-            <BiShow {...pwdIconAttr} />
-          )
-        }
-      />
+      {!input.options ? (
+        <Input
+          // don't use user.input.name as it will
+          // be considered as nested Object name under input under user
+          // there is no such thing as user.input
+          // we can't access other attributes value directly by calling them
+          value={user[input.name]}
+          label={input.name !== 'rfid' ? input.label : msg}
+          name={input.name}
+          onChange={inputHandler}
+          size="lg"
+          disabled={input.name !== 'rfid' ? false : true}
+          type={input.type ? input.type : showpwd ? 'text' : 'password'}
+          icon={
+            input.type ? null : showpwd ? (
+              <BiHide {...pwdIconAttr} />
+            ) : (
+              <BiShow {...pwdIconAttr} />
+            )
+          }
+        />
+      ) : (
+        <SelectInput
+          label={input.label}
+          options={input.options}
+          onChange={e => setUser({ ...user, [input.name]: e })}
+        />
+      )}
     </div>
   ));
 
@@ -153,13 +161,6 @@ const Registration = () => {
             >
               Daftar
             </Button>
-            {/* <Select label="Select Version" size="lg">
-              <Option>Material Tailwind HTML</Option>
-              <Option>Material Tailwind React</Option>
-              <Option>Material Tailwind Vue</Option>
-              <Option>Material Tailwind Angular</Option>
-              <Option>Material Tailwind Svelte</Option>
-            </Select> */}
           </div>
         </CardBody>
       </Card>

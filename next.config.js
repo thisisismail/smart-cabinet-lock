@@ -2,15 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  // async redirects() {
-  //   return [
-  //     {
-  //       source: '/',
-  //       destination: '/home',
-  //       permanent: true
-  //     }
-  //   ];
-  // },
   env: {
     apiKey: process.env.APIKEY,
     authDomain: process.env.AUTHDOMAIN,
@@ -21,6 +12,15 @@ const nextConfig = {
     measurementId: process.env.MEASUREMENTID,
     databaseURL: process.env.DATABASEURL
   }
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/',
+  //       destination: '/home',
+  //       permanent: true
+  //     }
+  //   ];
+  // },
 };
 
 module.exports = nextConfig;
