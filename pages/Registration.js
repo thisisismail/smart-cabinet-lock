@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import {
   addAccount,
@@ -13,7 +13,7 @@ import RegisterForm from '../components/RegisterForm';
 const Registration = () => {
   const router = useRouter();
 
-  const [user, setUser] = useState({
+  const [user, setUser] = React.useState({
     name: '',
     npm: '',
     major: '',
@@ -23,13 +23,16 @@ const Registration = () => {
     password: ''
   });
 
-  // const [showpwd, setShowpwd] = useState(false);
+  const [status, setStatus] = React.useState({
+    color: 'red',
+    text: 'Pendaftaran gagal'
+  });
 
-  const [msg, setMsg] = useState('Tap your card to machine');
+  const [msg, setMsg] = React.useState('Tap your card to machine');
 
   // detecting as user navigate to different page within or outside our website
   // to resetting the signup mode to 0 A.K.A off
-  useEffect(() => {
+  React.useEffect(() => {
     getStatusRFID().then(response => {
       response === 1
         ? getRFID().then(res => {
@@ -79,7 +82,7 @@ const Registration = () => {
   // so this effect won't be executed as we navigate to this page again (by Clicking the Link),
   // the page will be loaded again (by input the same URL to search bar and hit enter)
   // The routeChangeStart always be executed whenever there is a navigation action
-  useEffect(() => {
+  React.useEffect(() => {
     signupMode(1);
   }, []);
 
@@ -96,8 +99,22 @@ const Registration = () => {
 
   const submitHandler = () => {
     addAccount(user)
-      .catch(err => console.log(err))
-      .then(() => router.push('/LogData'));
+      .then(() => {
+        console.log('pendaftaran sukses');
+        setStatus(prevstates => ({ ...prevstates, color: 'green' }));
+        setStatus(prevstates => ({
+          ...prevstates,
+          text: 'Pendaftaran sukses'
+        }));
+      })
+      .catch(err => {
+        console.log(err);
+        setStatus(prevstates => ({ ...prevstates, color: 'red' }));
+        setStatus(prevstates => ({
+          ...prevstates,
+          text: 'Pendaftaran gagal'
+        }));
+      });
   };
 
   return (
@@ -108,7 +125,10 @@ const Registration = () => {
         inputHandler={inputHandler}
         selectHandler={selectHandler}
         submitHandler={submitHandler}
+        callbackFunc={() => router.push('/LogData')}
         setDisable={Object.values(user).some(x => x === null || x === '')}
+        message={status.text}
+        color={status.color}
       />
     </>
   );

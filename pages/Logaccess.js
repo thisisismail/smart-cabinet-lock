@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 // import { Button } from '@material-tailwind/react';
 import { getAccounts } from '../api/services/utilsFirebase';
 
@@ -6,10 +6,10 @@ const Logaccess = () => {
   // // We can bypass the use of useState and useEffect
   // // by using getServerSideProps
 
-  const [accounts, setAccounts] = useState('');
+  const [accounts, setAccounts] = React.useState('');
 
   // fetch data from firebase in realtime
-  useEffect(() => {
+  React.useEffect(() => {
     getAccounts()
       .then(response => {
         setAccounts(response);

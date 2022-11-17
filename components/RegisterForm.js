@@ -1,14 +1,9 @@
 import React from 'react';
-import {
-  Card,
-  CardBody,
-  Typography,
-  Button,
-  Input
-} from '@material-tailwind/react';
+import { Card, CardBody, Typography, Input } from '@material-tailwind/react';
 import { BiHide, BiShow } from 'react-icons/bi';
 import { formInputs } from '../utils/data';
 import SelectInput from './SelectInput';
+import SubmitBtn from '../components/BtnWithAlert';
 
 const RegisterForm = props => {
   const [showpwd, setShowpwd] = React.useState(false);
@@ -58,24 +53,27 @@ const RegisterForm = props => {
     </div>
   ));
 
-  const Forms = (
-    <div className="flex flex-col gap-2">
-      {InputsForm}
-      <Button disabled={props.setDisable} onClick={props.submitHandler}>
-        Daftar
-      </Button>
-    </div>
-  );
-
   return (
-    <Card>
-      <CardBody className="flex flex-col gap-2">
-        <Typography variant="h5" color="blue" textGradient>
-          Pendaftaran
-        </Typography>
-        {Forms}
-      </CardBody>
-    </Card>
+    <>
+      <Card className="">
+        <CardBody className="flex flex-col gap-2">
+          <Typography variant="h5" color="blue" textGradient>
+            Pendaftaran
+          </Typography>
+          <div className="flex flex-col gap-2">
+            {InputsForm}
+            <SubmitBtn
+              title="Daftar"
+              disabled={props.setDisable}
+              onClick={props.submitHandler}
+              message={props.message}
+              callbackFunc={props.callbackFunc}
+              color={props.color}
+            />
+          </div>
+        </CardBody>
+      </Card>
+    </>
   );
 };
 

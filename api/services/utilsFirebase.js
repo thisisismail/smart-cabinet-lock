@@ -1,4 +1,4 @@
-import { getDatabase, get, set, ref, child } from 'firebase/database';
+import { getDatabase, get, set, ref, child, remove } from 'firebase/database';
 import {
   getAuth,
   signInAnonymously,
@@ -30,6 +30,12 @@ const addAccount = userObj => {
     .then(() => setStatusRegister(1))
     .then(() => setStatusRFID(0))
     .then(() => setRFID(0));
+};
+
+const deleteAccount = async data => {
+  return remove(ref(dataDb, 'users/' + data))
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
 };
 
 const setRFID = val => {
@@ -142,6 +148,7 @@ export {
   getAccounts,
   getRFID,
   addAccount,
+  deleteAccount,
   signupMode,
   setRFID,
   getStatusMessage,
