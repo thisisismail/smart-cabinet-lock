@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { BiShow, BiHide } from 'react-icons/bi';
-import {
-  Card,
-  CardBody,
-  Button,
-  Typography,
-  Input
-} from '@material-tailwind/react';
 import {
   addAccount,
   signupMode,
@@ -16,8 +8,7 @@ import {
   getStatusRFID,
   getRFID
 } from '../api/services/utilsFirebase';
-import { formInputs } from '../utils/data';
-import SelectInput from '../components/SelectInput';
+import RegisterForm from '../components/RegisterForm';
 
 const Registration = () => {
   const router = useRouter();
@@ -32,7 +23,7 @@ const Registration = () => {
     password: ''
   });
 
-  const [showpwd, setShowpwd] = useState(false);
+  // const [showpwd, setShowpwd] = useState(false);
 
   const [msg, setMsg] = useState('Tap your card to machine');
 
@@ -98,70 +89,27 @@ const Registration = () => {
     setUser(values => ({ ...values, [name]: value }));
   };
 
-  const showPassword = () => {
-    setShowpwd(!showpwd);
+  const selectHandler = e => {
+    const data = JSON.parse(e);
+    setUser(prevstates => ({ ...prevstates, [data.name]: data.value }));
   };
 
-  const pwdIconAttr = {
-    onClick: showPassword,
-    cursor: 'pointer',
-    size: 30,
-    className: 'absolute'
+  const submitHandler = () => {
+    addAccount(user)
+      .catch(err => console.log(err))
+      .then(() => router.push('/LogData'));
   };
-
-  const InputsForm = formInputs.map(input => (
-    <div key={input.label} className="flex flex-row items-center">
-      {!input.options ? (
-        <Input
-          // don't use user.input.name as it will
-          // be considered as nested Object name under input under user
-          // there is no such thing as user.input
-          // we can't access other attributes value directly by calling them
-          value={user[input.name]}
-          label={input.name !== 'rfid' ? input.label : msg}
-          name={input.name}
-          onChange={inputHandler}
-          size="lg"
-          disabled={input.name !== 'rfid' ? false : true}
-          type={input.type ? input.type : showpwd ? 'text' : 'password'}
-          icon={
-            input.type ? null : showpwd ? (
-              <BiHide {...pwdIconAttr} />
-            ) : (
-              <BiShow {...pwdIconAttr} />
-            )
-          }
-        />
-      ) : (
-        <SelectInput
-          label={input.label}
-          options={input.options}
-          onChange={e => setUser({ ...user, [input.name]: e })}
-        />
-      )}
-    </div>
-  ));
 
   return (
     <>
-      <Card className="">
-        <CardBody className="flex flex-col gap-2">
-          <Typography variant="h5" color="blue" textGradient>
-            Pendaftaran
-          </Typography>
-          <div className="flex flex-col gap-2">
-            {InputsForm}
-            <Button
-              disabled={Object.values(user).some(x => x === null || x === '')}
-              onClick={() => {
-                addAccount(user).then(() => router.push('/LogData'));
-              }}
-            >
-              Daftar
-            </Button>
-          </div>
-        </CardBody>
-      </Card>
+      <RegisterForm
+        user={{ user }}
+        msg={msg}
+        inputHandler={inputHandler}
+        selectHandler={selectHandler}
+        submitHandler={submitHandler}
+        setDisable={Object.values(user).some(x => x === null || x === '')}
+      />
     </>
   );
 };

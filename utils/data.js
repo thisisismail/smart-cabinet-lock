@@ -43,7 +43,19 @@ const formInputs = [
   {
     label: 'Laboratorium',
     name: 'lab',
-    type: 'text'
+    type: 'text',
+    options: [
+      'Kendali',
+      'Telekomunikasi',
+      'Elektronika',
+      'Nanoelektronika',
+      'Tegangan Tinggi dan Pengukuran Listrik (TTPL)',
+      'Laboratorium Konversi Energi Listrik (LKEL)',
+      'Sistem Tenaga Listrik',
+      'Digital',
+      'Jaringan',
+      'Biomedis'
+    ]
   },
   {
     label: 'Password',
