@@ -24,8 +24,8 @@ const Registration = () => {
   });
 
   const [status, setStatus] = React.useState({
-    color: 'red',
-    text: 'Pendaftaran gagal'
+    color: '',
+    text: ''
   });
 
   const [msg, setMsg] = React.useState('Tap your card to machine');
