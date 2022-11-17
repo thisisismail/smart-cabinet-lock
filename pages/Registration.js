@@ -24,23 +24,25 @@ const Registration = () => {
   });
 
   const [status, setStatus] = React.useState({
-    color: '',
-    text: ''
+    color: 'blue',
+    text: 'Mengupload data'
   });
 
   const [msg, setMsg] = React.useState('Tap your card to machine');
 
   // detecting as user navigate to different page within or outside our website
   // to resetting the signup mode to 0 A.K.A off
+
   React.useEffect(() => {
-    getStatusRFID().then(response => {
-      response === 1
-        ? getRFID().then(res => {
-            setUser(prevState => ({ ...prevState, rfid: res }));
-            setMsg('Card successfully registered');
-          })
-        : setUser(prevState => ({ ...prevState, rfid: '' }));
-    });
+    navigator.onLine &&
+      getStatusRFID().then(response => {
+        response === 1
+          ? getRFID().then(res => {
+              setUser(prevState => ({ ...prevState, rfid: res }));
+              setMsg('Card successfully registered');
+            })
+          : setUser(prevState => ({ ...prevState, rfid: '' }));
+      });
 
     const pathname = window.location.pathname;
 
@@ -98,23 +100,11 @@ const Registration = () => {
   };
 
   const submitHandler = () => {
-    addAccount(user)
-      .then(() => {
-        console.log('pendaftaran sukses');
-        setStatus(prevstates => ({ ...prevstates, color: 'green' }));
-        setStatus(prevstates => ({
-          ...prevstates,
-          text: 'Pendaftaran sukses'
-        }));
-      })
-      .catch(err => {
-        console.log(err);
-        setStatus(prevstates => ({ ...prevstates, color: 'red' }));
-        setStatus(prevstates => ({
-          ...prevstates,
-          text: 'Pendaftaran gagal'
-        }));
-      });
+    addAccount(user).then(() => {
+      console.log('Pendaftaran sukses');
+      setStatus(prevstates => ({ ...prevstates, color: 'green' }));
+      setStatus(prevstates => ({ ...prevstates, text: 'Pendaftaran sukses' }));
+    });
   };
 
   return (
