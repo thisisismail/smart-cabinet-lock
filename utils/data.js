@@ -14,11 +14,11 @@ const navLinks = [
   {
     name: 'Profile',
     path: '/Profile'
-  },
-  {
-    name: 'Test',
-    path: '/TestLab'
   }
+  // {
+  //   name: 'Test',
+  //   path: '/TestLab'
+  // }
 ];
 
 const formInputs = [

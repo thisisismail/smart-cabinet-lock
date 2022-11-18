@@ -1,4 +1,5 @@
 import { Typography } from '@material-tailwind/react';
+import Link from 'next/link';
 
 const FourOhFour = () => {
   return (
@@ -9,7 +10,14 @@ const FourOhFour = () => {
             <Typography variant="h1" className="animate-bounce">
               404
             </Typography>
-            <Typography variant="paragraph">Page not found</Typography>
+            <Typography variant="paragraph">
+              Page not found.{' '}
+              <div className="text-blue-600 inline">
+                <Link href="/" className="">
+                  Back to home
+                </Link>
+              </div>
+            </Typography>
           </div>
         </div>
       </div>
