@@ -20,7 +20,10 @@ const BtnWithAlert = props => {
             show={show}
             style={{ maxWidth: 300 }}
             color={props.color}
-            className=""
+            animate={{
+              mount: { y: 0 },
+              unmount: { y: 100 }
+            }}
             dismissible={{
               onClose: () => {
                 setShow(false);
