@@ -1,6 +1,6 @@
 import { Typography } from '@material-tailwind/react';
 import Link from 'next/link';
-import Centering from '../components/Centering';
+import Centering from '../components/layouts/Centering';
 
 const FourOhFour = () => {
   return (

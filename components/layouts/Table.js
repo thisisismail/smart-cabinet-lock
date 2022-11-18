@@ -1,24 +1,22 @@
 import { Card, CardBody, Typography } from '@material-tailwind/react';
 
-const StudentsData = props => {
+const TableData = props => {
   return (
     <>
       <Card>
         <CardBody>
           <Typography variant="h5" color="blue" textGradient>
-            Data Mahasiswa
+            {props.title}
           </Typography>
           <table className="w-full mt-2">
             <thead className="border-0">
               <tr className="border-0">
-                <th>Nama</th>
-                <th>NPM</th>
-                <th>Jurusan</th>
-                <th>Laboratorium</th>
-                <th>Angkatan</th>
+                {props.colTitle.map(col => (
+                  <th key={col}>{col}</th>
+                ))}
               </tr>
             </thead>
-            <tbody className="border-2">{props.accounts}</tbody>
+            <tbody className="border-2">{props.dataBody}</tbody>
           </table>
         </CardBody>
       </Card>
@@ -26,4 +24,4 @@ const StudentsData = props => {
   );
 };
 
-export default StudentsData;
+export default TableData;

@@ -4,16 +4,16 @@ const navLinks = [
     path: '/'
   },
   {
-    name: 'Daftar',
-    path: '/Registration'
-  },
-  {
     name: 'Catatan Akses',
     path: '/LogData'
   },
   {
-    name: 'Profile',
-    path: '/Profile'
+    name: 'Data Mahasiswa',
+    path: '/accounts'
+  },
+  {
+    name: 'Daftar',
+    path: '/Registration'
   }
   // {
   //   name: 'Test',
@@ -72,4 +72,50 @@ const formInputs = [
     type: 'text'
   }
 ];
-export { navLinks, formInputs };
+
+const conversion = {
+  months: {
+    en: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
+    ],
+    id: [
+      'Januari',
+      'Februari',
+      'Maret',
+      'April',
+      'Mei',
+      'Juni',
+      'Juli',
+      'Agustus',
+      'September',
+      'Oktober',
+      'November',
+      'Desember'
+    ]
+  },
+  days: {
+    en: [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday'
+    ],
+    id: ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']
+  }
+};
+
+export { navLinks, formInputs, conversion };

@@ -1,4 +1,4 @@
-import NavBar from './NavBar';
+import NavBar from '../NavBar';
 
 // // create global variable provider using react context
 // export const UserContext = createContext();

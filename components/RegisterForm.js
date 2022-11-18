@@ -1,9 +1,9 @@
 import React from 'react';
 import { Card, CardBody, Typography, Input } from '@material-tailwind/react';
 import { BiHide, BiShow } from 'react-icons/bi';
-import { formInputs } from '../utils/data';
-import SelectInput from './SelectInput';
-import SubmitBtn from '../components/BtnWithAlert';
+import { formInputs } from '../services/data';
+import SelectInput from './layouts/InputSelectOptions';
+import SubmitBtn from './layouts/BtnWithAlert';
 
 const RegisterForm = props => {
   const [showpwd, setShowpwd] = React.useState(false);

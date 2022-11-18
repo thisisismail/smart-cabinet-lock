@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { navLinks } from '../utils/data.js';
+import { navLinks } from '../services/data.js';
 // don't  forget to import the provider
 // import { UserContext, LoadingPage } from './Layout';
 

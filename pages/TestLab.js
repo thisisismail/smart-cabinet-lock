@@ -7,7 +7,7 @@ import { Card, CardBody, Typography } from '@material-tailwind/react';
 // } from '../api/services/utilsFirebase';
 // import { Button } from '@material-tailwind/react';
 // import Loading from '../components/Loading';
-import Btn from '../components/BtnWithAlert';
+import Btn from '../components/layouts/BtnWithAlert';
 // import { deleteAccount } from '../api/services/utilsFirebase';
 
 const TestLab = () => {
