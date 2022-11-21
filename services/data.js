@@ -21,6 +21,11 @@ const navLinks = [
   // }
 ];
 
+const loginInputs = [
+  { label: 'Email', name: 'email', type: 'email' },
+  { label: 'Password', name: 'password', type: null }
+];
+
 const formInputs = [
   {
     label: 'Nama Lengkap',
@@ -60,6 +65,11 @@ const formInputs = [
       'Jaringan',
       'Biomedis'
     ]
+  },
+  {
+    label: 'Email',
+    name: 'email',
+    type: 'email'
   },
   {
     label: 'Password',
@@ -118,4 +128,4 @@ const conversion = {
   }
 };
 
-export { navLinks, formInputs, conversion };
+export { navLinks, formInputs, loginInputs, conversion };

@@ -8,6 +8,10 @@ const Layout = ({ children }) => {
   // const userName = 'Hello There';
   // const [loading, setLoading] = useState(true);
 
+  // if (true) {
+  //   return <>kocakkkk</>;
+  // }
+
   return (
     //assign value to global variable
     // <UserContext.Provider value={userName}>

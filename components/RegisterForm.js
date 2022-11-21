@@ -64,11 +64,15 @@ const RegisterForm = props => {
             {InputsForm}
             <SubmitBtn
               title="Daftar"
-              disabled={props.setDisable}
-              onClick={props.submitHandler}
-              message={props.message}
-              callbackFunc={props.callbackFunc}
-              color={props.color}
+              // disabled={props.setDisable}
+              // onClick={props.submitHandler}
+              // message={props.message}
+              // callbackFunc={props.callbackFunc}
+              // alertColor={props.alertColor}
+              // btnColor={props.btnColor}
+
+              // consume all props
+              {...props}
             />
           </div>
         </CardBody>

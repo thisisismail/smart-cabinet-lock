@@ -1,14 +1,16 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import {
-  addAccount,
+  signUp,
   signupMode,
   setRFID,
   setStatusRFID,
   getStatusRFID,
-  getRFID
-} from '../api/services/utilsFirebase';
+  getRFID,
+  addAccount
+} from '../api/firebase/services/utilsFirebase';
 import RegisterForm from '../components/RegisterForm';
+import withProtected from '../higherOrderComponents/WithProtected';
 
 const Registration = () => {
   const router = useRouter();
@@ -20,7 +22,8 @@ const Registration = () => {
     year: '',
     lab: '',
     rfid: '',
-    password: ''
+    password: '',
+    email: ''
   });
 
   const [status, setStatus] = React.useState({
@@ -100,28 +103,30 @@ const Registration = () => {
   };
 
   const submitHandler = () => {
-    addAccount(user).then(() => {
-      console.log('Pendaftaran sukses');
+    // Add user to realtime database in firebase
+    signUp(user).then(() => {
+      console.log('Ciye berhasil');
       setStatus(prevstates => ({ ...prevstates, color: 'green' }));
       setStatus(prevstates => ({ ...prevstates, text: 'Pendaftaran sukses' }));
     });
+    addAccount(user);
   };
 
   return (
-    <>
-      <RegisterForm
-        user={{ user }}
-        msg={msg}
-        inputHandler={inputHandler}
-        selectHandler={selectHandler}
-        submitHandler={submitHandler}
-        callbackFunc={() => router.push('/LogData')}
-        setDisable={Object.values(user).some(x => x === null || x === '')}
-        message={status.text}
-        color={status.color}
-      />
-    </>
+    <RegisterForm
+      // Form properties => RegisterForm
+      user={{ user }}
+      msg={msg}
+      inputHandler={inputHandler}
+      selectHandler={selectHandler}
+      // Button properties => BtnWithAlert
+      onClick={submitHandler}
+      callbackFunc={() => router.push('/accounts')}
+      setDisable={Object.values(user).some(x => x === null || x === '')}
+      message={status.text}
+      alertColor={status.color}
+    />
   );
 };
 
-export default Registration;
+export default withProtected(Registration);

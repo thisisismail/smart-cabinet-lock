@@ -19,7 +19,7 @@ const BtnWithAlert = props => {
           <Alert
             show={show}
             style={{ maxWidth: 300 }}
-            color={props.color}
+            color={props.alertColor}
             animate={{
               mount: { y: 0 },
               unmount: { y: 100 }
@@ -38,7 +38,8 @@ const BtnWithAlert = props => {
       </div>
       <Button
         className="w-full"
-        disabled={props.disabled}
+        color={props.btnColor}
+        disabled={props.setDisabled}
         onClick={() => {
           showHandler();
           props.onClick();
