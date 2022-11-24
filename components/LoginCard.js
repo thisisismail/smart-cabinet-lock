@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import { BiHide, BiShow } from 'react-icons/bi';
 import {
   Card,
@@ -13,6 +14,8 @@ import { loginInputs } from '../services/data';
 import { useUser } from '../context/user';
 
 const LoginCard = () => {
+  const router = useRouter();
+
   const [userForm, setUserForm] = React.useState({
     email: '',
     password: ''
@@ -20,8 +23,19 @@ const LoginCard = () => {
 
   const [showpwd, setShowpwd] = React.useState(false);
 
+  const [click, setClick] = React.useState(false);
+
   const user = useUser();
-  const { setUser } = user;
+
+  // React.useEffect(() => {
+  //   window.localStorage.setItem(
+  //     'USERS_INFO',
+  //     JSON.stringify({
+  //       CURRENT_EMAIL: userForm.email,
+  //       CURRENT_PASSWORD: userForm.password
+  //     })
+  //   );
+  // }, [userForm]);
 
   const inputHandler = e => {
     const name = e.target.name;
@@ -30,7 +44,10 @@ const LoginCard = () => {
   };
 
   const submitHandler = () => {
-    signInWithEmail(setUser, userForm.email, userForm.password);
+    signInWithEmail(userForm.email, userForm.password).then(() => {
+      router.push('/');
+    });
+    setClick(!click);
   };
 
   const showPassword = () => {

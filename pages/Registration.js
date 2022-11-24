@@ -1,7 +1,8 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import {
-  signUp,
+  signOut,
+  addNewUser,
   signupMode,
   setRFID,
   setStatusRFID,
@@ -11,8 +12,11 @@ import {
 } from '../api/firebase/services/utilsFirebase';
 import RegisterForm from '../components/RegisterForm';
 import withProtected from '../higherOrderComponents/WithProtected';
+import { useUser } from '../context/user';
 
 const Registration = () => {
+  const currentUser = useUser();
+
   const router = useRouter();
 
   const [user, setUser] = React.useState({
@@ -104,12 +108,16 @@ const Registration = () => {
 
   const submitHandler = () => {
     // Add user to realtime database in firebase
-    signUp(user).then(() => {
-      console.log('Ciye berhasil');
-      setStatus(prevstates => ({ ...prevstates, color: 'green' }));
-      setStatus(prevstates => ({ ...prevstates, text: 'Pendaftaran sukses' }));
-    });
-    addAccount(user);
+    addNewUser(user)
+      .then(() => {
+        setStatus(prevstates => ({ ...prevstates, color: 'green' }));
+        setStatus(prevstates => ({
+          ...prevstates,
+          text: 'Pendaftaran sukses'
+        }));
+      })
+      // .then(() => signOut());
+      .then(() => addAccount(user));
   };
 
   return (

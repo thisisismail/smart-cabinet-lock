@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { useUser } from '../context/user';
 
-const withProtected = Pages => {
+const withoutProtected = Pages => {
   return props => {
     const router = useRouter();
     const user = useUser();
@@ -10,15 +10,15 @@ const withProtected = Pages => {
     const { uid } = user;
 
     if (!uid) {
-      console.log('Access denied');
+      render: return <Pages {...props} />;
+    } else {
+      console.log('you already logged in');
       // Prevent router from push when client is still rendering
       if (typeof window === 'undefined') return null;
-      router.replace('/SignIn');
+      router.replace('/');
       render: return <></>;
-    } else {
-      render: return <Pages {...props} />;
     }
   };
 };
 
-export default withProtected;
+export default withoutProtected;

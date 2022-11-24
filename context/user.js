@@ -3,7 +3,6 @@ import { useContext, createContext } from 'react';
 
 const InitialUserState = {
   email: null,
-  password: null,
   uid: null,
   displayName: null
 };

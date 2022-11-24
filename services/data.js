@@ -14,11 +14,15 @@ const navLinks = [
   {
     name: 'Daftar',
     path: '/Registration'
+  },
+  {
+    name: 'Test',
+    path: '/TestLab'
+  },
+  {
+    name: 'Masuk',
+    path: '/SignIn'
   }
-  // {
-  //   name: 'Test',
-  //   path: '/TestLab'
-  // }
 ];
 
 const loginInputs = [

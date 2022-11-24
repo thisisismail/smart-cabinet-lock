@@ -1,6 +1,6 @@
 import '../styles/globals.css';
 import Layout from '../components/layouts/Layout';
-// import AuthStateChangeProvider from '../context/auth';
+import AuthStateChangeProvider from '../context/auth';
 import { UserProvider } from '../context/user';
 
 function MyApp({ Component, pageProps }) {
@@ -8,9 +8,9 @@ function MyApp({ Component, pageProps }) {
     // <Layout>{!loading ? <Component {...pageProps} /> : <Loading />}</Layout>
     <UserProvider>
       <Layout>
-        {/* <AuthStateChangeProvider> */}
+        <AuthStateChangeProvider>
           <Component {...pageProps} />
-        {/* </AuthStateChangeProvider> */}
+        </AuthStateChangeProvider>
       </Layout>
     </UserProvider>
   );

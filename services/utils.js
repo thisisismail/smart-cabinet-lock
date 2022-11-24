@@ -14,4 +14,9 @@ const timeFormator = data => {
   return result;
 };
 
-export { convertToId, timeFormator };
+const checkEmail = email => {
+  const status = /\S+@ui.ac.id/.test(email);
+  return status;
+};
+
+export { convertToId, timeFormator, checkEmail };

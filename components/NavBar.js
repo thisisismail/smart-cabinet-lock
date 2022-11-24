@@ -12,6 +12,7 @@ const NavBar = () => {
   // const { loading, setLoading } = React.useContext(LoadingPage);
 
   const user = useUser();
+  const { uid, displayName } = user;
 
   const router = useRouter();
 
@@ -19,14 +20,13 @@ const NavBar = () => {
 
   const menu = navLinks.map((item, index) => {
     return (
-      // <p key={index} className="font-sans font-semibold text-white">
       <Link href={item.path} key={index}>
         <a
           className={`${linkStyle} ${
-            router.pathname == item.path ? 'text-yellow-600' : 'text-white'
+            router.pathname === item.path ? 'text-yellow-600' : 'text-white'
           }`}
         >
-          {item.name}
+          {item.name !== 'Masuk' ? item.name : !uid ? item.name : displayName}
         </a>
       </Link>
       // </p>
@@ -37,8 +37,6 @@ const NavBar = () => {
     <>
       <header className="sticky z-40 top-0 h-12 border-0 flex justify-between items-center bg-blue-900 rounded-b-lg px-4">
         {menu}
-        {/* {value} */}
-        <>{user.displayName}</>
       </header>
     </>
   );
