@@ -11,7 +11,7 @@ import {
 import { signInWithEmail } from '../api/firebase/services/utilsFirebase';
 // import Center from '../components/layouts/Centering';
 import { loginInputs } from '../services/data';
-import { useUser } from '../context/user';
+// import { useUser } from '../context/user';
 
 const LoginCard = () => {
   const router = useRouter();
@@ -25,7 +25,7 @@ const LoginCard = () => {
 
   const [click, setClick] = React.useState(false);
 
-  const user = useUser();
+  // const user = useUser();
 
   // React.useEffect(() => {
   //   window.localStorage.setItem(

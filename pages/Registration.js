@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import {
-  signOut,
+  // signOut,
   addNewUser,
   signupMode,
   setRFID,
@@ -12,10 +12,10 @@ import {
 } from '../api/firebase/services/utilsFirebase';
 import RegisterForm from '../components/RegisterForm';
 import withProtected from '../higherOrderComponents/WithProtected';
-import { useUser } from '../context/user';
+// import { useUser } from '../context/user';
 
 const Registration = () => {
-  const currentUser = useUser();
+  // const currentUser = useUser();
 
   const router = useRouter();
 
