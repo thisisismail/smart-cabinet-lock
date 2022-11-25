@@ -31,13 +31,17 @@ const LoginCard = () => {
 
   const [click, setClick] = React.useState(false);
 
+  React.useEffect(() => {
+    !checkEmail(user.email)
+      ? setError({ ...error, email: 'Gunakan format email UI' })
+      : setError({ ...error, email: null });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user.email]);
+
   const inputHandler = e => {
     const name = e.target.name;
     const value = e.target.value;
     setUser(prevStates => ({ ...prevStates, [name]: value }));
-    !checkEmail(user.email)
-      ? setError({ ...error, email: 'Gunakan format email UI' })
-      : setError({ ...error, email: null });
   };
 
   const submitHandler = () => {
