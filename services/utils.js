@@ -15,7 +15,7 @@ const timeFormator = data => {
 };
 
 const checkEmail = email => {
-  const status = /\S+@ui.ac.id/.test(email);
+  const status = /\S+@ui.ac.id/.test(email) && /\S/.test(email);
   return status;
 };
 

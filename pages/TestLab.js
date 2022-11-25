@@ -58,6 +58,7 @@ const TestLab = () => {
 
   const handleShow = () => {
     console.log(user);
+    // updateUser({ name: 'Raden Wisnu Andhika' });
   };
 
   // const myInput = (

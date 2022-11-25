@@ -12,6 +12,7 @@ import {
 } from '../api/firebase/services/utilsFirebase';
 import RegisterForm from '../components/RegisterForm';
 import withProtected from '../higherOrderComponents/WithProtected';
+
 // import { useUser } from '../context/user';
 
 const Registration = () => {
@@ -121,19 +122,21 @@ const Registration = () => {
   };
 
   return (
-    <RegisterForm
-      // Form properties => RegisterForm
-      user={{ user }}
-      msg={msg}
-      inputHandler={inputHandler}
-      selectHandler={selectHandler}
-      // Button properties => BtnWithAlert
-      onClick={submitHandler}
-      callbackFunc={() => router.push('/accounts')}
-      setDisable={Object.values(user).some(x => x === null || x === '')}
-      message={status.text}
-      alertColor={status.color}
-    />
+    <>
+      <RegisterForm
+        // Form properties => RegisterForm
+        user={{ user }}
+        msg={msg}
+        inputHandler={inputHandler}
+        selectHandler={selectHandler}
+        // Button properties => BtnWithAlert
+        onClick={submitHandler}
+        callbackFunc={() => router.push('/accounts')}
+        setDisabled={Object.values(user).some(x => x === null || x === '')}
+        message={status.text}
+        alertColor={status.color}
+      />
+    </>
   );
 };
 

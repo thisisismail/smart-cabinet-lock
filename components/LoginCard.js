@@ -11,40 +11,37 @@ import {
 import { signInWithEmail } from '../api/firebase/services/utilsFirebase';
 // import Center from '../components/layouts/Centering';
 import { loginInputs } from '../services/data';
+import { checkEmail } from '../services/utils';
 // import { useUser } from '../context/user';
 
 const LoginCard = () => {
   const router = useRouter();
 
-  const [userForm, setUserForm] = React.useState({
+  const [user, setUser] = React.useState({
     email: '',
     password: ''
+  });
+
+  const [error, setError] = React.useState({
+    email: null,
+    password: null
   });
 
   const [showpwd, setShowpwd] = React.useState(false);
 
   const [click, setClick] = React.useState(false);
 
-  // const user = useUser();
-
-  // React.useEffect(() => {
-  //   window.localStorage.setItem(
-  //     'USERS_INFO',
-  //     JSON.stringify({
-  //       CURRENT_EMAIL: userForm.email,
-  //       CURRENT_PASSWORD: userForm.password
-  //     })
-  //   );
-  // }, [userForm]);
-
   const inputHandler = e => {
     const name = e.target.name;
     const value = e.target.value;
-    setUserForm(prevStates => ({ ...prevStates, [name]: value }));
+    setUser(prevStates => ({ ...prevStates, [name]: value }));
+    !checkEmail(user.email)
+      ? setError({ ...error, email: 'Gunakan format email UI' })
+      : setError({ ...error, email: null });
   };
 
   const submitHandler = () => {
-    signInWithEmail(userForm.email, userForm.password).then(() => {
+    signInWithEmail(user.email, user.password).then(() => {
       router.push('/');
     });
     setClick(!click);
@@ -64,7 +61,7 @@ const LoginCard = () => {
   const InputsForm = loginInputs.map(input => (
     <div key={input.name}>
       <Input
-        value={userForm[input.name]}
+        value={user[input.name]}
         label={input.label}
         name={input.name}
         onChange={inputHandler}
@@ -78,6 +75,9 @@ const LoginCard = () => {
           )
         }
       />
+      <div className="text-sm text-red-500 pl-3">
+        {input.name === 'email' && user.email && error.email}
+      </div>
     </div>
   ));
 
@@ -90,7 +90,12 @@ const LoginCard = () => {
           </Typography>
           {InputsForm}
           {/* <Input label="Or sign up with admin card" disabled></Input> */}
-          <Button onClick={submitHandler}>Masuk</Button>
+          <Button
+            onClick={submitHandler}
+            disabled={Object.values(user).some(x => x === null || x === '')}
+          >
+            Masuk
+          </Button>
           {/* <Button onClick={storePw}>Store PW</Button> */}
         </CardBody>
       </Card>
