@@ -19,4 +19,15 @@ const checkEmail = email => {
   return status;
 };
 
-export { convertToId, timeFormator, checkEmail };
+const getErrorMessage = errCode => {
+  switch (errCode) {
+    case 'auth/user-not-found':
+      return 'Akun tidak ditemukan';
+    case 'auth/wrong-password' || 'auth/wrong-email':
+      return 'Akun tidak ditemukan';
+    default:
+      return 'Error, periksa koneksi internet Anda';
+  }
+};
+
+export { convertToId, timeFormator, checkEmail, getErrorMessage };

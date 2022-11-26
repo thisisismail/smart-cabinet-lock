@@ -11,7 +11,7 @@ import {
 import { signInWithEmail } from '../api/firebase/services/utilsFirebase';
 // import Center from '../components/layouts/Centering';
 import { loginInputs } from '../services/data';
-import { checkEmail } from '../services/utils';
+import { checkEmail, getErrorMessage } from '../services/utils';
 // import { useUser } from '../context/user';
 
 const LoginCard = () => {
@@ -24,7 +24,7 @@ const LoginCard = () => {
 
   const [error, setError] = React.useState({
     email: null,
-    password: null
+    auth: null
   });
 
   const [showpwd, setShowpwd] = React.useState(false);
@@ -42,11 +42,17 @@ const LoginCard = () => {
     const name = e.target.name;
     const value = e.target.value;
     setUser(prevStates => ({ ...prevStates, [name]: value }));
+    error.auth && setError(prevStates => ({ ...prevStates, auth: null }));
   };
 
   const submitHandler = () => {
-    signInWithEmail(user.email, user.password).then(() => {
-      router.push('/');
+    signInWithEmail(user.email, user.password).then(res => {
+      if (res) {
+        console.log(res);
+        setError({ ...error, auth: getErrorMessage(res) });
+      } else {
+        router.push('/');
+      }
     });
     setClick(!click);
   };
@@ -94,9 +100,13 @@ const LoginCard = () => {
           </Typography>
           {InputsForm}
           {/* <Input label="Or sign up with admin card" disabled></Input> */}
+          <div className="text-sm text-red-500 pl-3">{error.auth}</div>
           <Button
             onClick={submitHandler}
-            disabled={Object.values(user).some(x => x === null || x === '')}
+            disabled={
+              Object.values(user).some(x => x === null || x === '') ||
+              error.email
+            }
           >
             Masuk
           </Button>

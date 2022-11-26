@@ -12,9 +12,12 @@ const withProtected = Pages => {
     if (!uid) {
       console.log('Access denied');
       // Prevent router from push when client is still rendering
-      if (typeof window === 'undefined') return null;
-      router.replace('/SignIn');
-      render: return <></>;
+      if (typeof window === 'undefined') {
+        return null;
+      } else {
+        router.replace('/SignIn');
+        render: return <></>;
+      }
     } else {
       render: return <Pages {...props} />;
     }

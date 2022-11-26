@@ -146,7 +146,7 @@ const signInWithEmail = async (email, password) => {
       console.log('Try to sign in with email and password');
     })
     .catch(error => {
-      console.log(error.code);
+      return error.code;
     });
 };
 
