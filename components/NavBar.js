@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { navLinks } from '../services/data.js';
+import DropDownMenu from './DropDownMenu';
 import UserInfo from './UserInfo';
 // don't  forget to import the provider
 // import { UserContext, LoadingPage } from './Layout';
@@ -27,6 +28,7 @@ const NavBar = () => {
     return (
       <div
         key={index}
+        className="hidden md:block"
         // style={{ width: item.name === 'Masuk' && 200 }}
       >
         <Link href={item.path}>
@@ -45,8 +47,11 @@ const NavBar = () => {
   return (
     <>
       <header className="sticky z-40 top-0 h-12 border-0 flex justify-between items-center bg-blue-900 rounded-b-lg px-4">
+        <div className="border-0 md:hidden">
+          <DropDownMenu navLinks={navLinks} />
+        </div>
         {menu}
-        {uid && <UserInfo displayName={displayName} />}
+        {uid && <UserInfo displayName={displayName} uid={uid} />}
         {/* <UserInfo /> */}
       </header>
     </>

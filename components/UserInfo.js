@@ -34,7 +34,8 @@ const UserInfo = props => {
     <>
       {popup && userInfo}
       <div
-        className={`${linkStyle} text-white cursor-pointer`}
+        className={`${linkStyle} text-white cursor-pointer truncate border-0 w-full text-right `}
+        style={{ width: 200 }}
         onClick={clickHandler}
       >
         {props.displayName}
