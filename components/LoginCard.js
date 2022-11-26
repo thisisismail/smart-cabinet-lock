@@ -48,7 +48,6 @@ const LoginCard = () => {
   const submitHandler = () => {
     signInWithEmail(user.email, user.password).then(res => {
       if (res) {
-        console.log(res);
         setError({ ...error, auth: getErrorMessage(res) });
       } else {
         router.push('/');

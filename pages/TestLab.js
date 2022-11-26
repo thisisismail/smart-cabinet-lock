@@ -13,7 +13,7 @@ import // signIn,
 // updateUser
 // getPassword
 '../api/firebase/services/utilsFirebase';
-// import { useUser } from '../context/user';
+import { useUser } from '../context/user';
 import UserInfo from '../components/UserInfo';
 // import { Button } from '@material-tailwind/react';
 // import Loading from '../components/Loading';
@@ -30,7 +30,7 @@ const TestLab = () => {
   //   };
   // });
 
-  // const user = useUser();
+  const user = useUser();
 
   // const [input, setInput] = React.useState('');
 
@@ -41,7 +41,7 @@ const TestLab = () => {
   //   console.log(checkEmail(input));
   // }, [input]);
 
-  // const { name, uid } = user;
+  const { displayName } = user;
 
   // const inputHandler = e => {
   //   setInput(e.target.value);
@@ -105,11 +105,11 @@ const TestLab = () => {
         <Button onClick={() => signOut()}>SignOUt</Button> */}
         {/* {myInput}
         <div>Hello</div> */}
-
+        hello
         {/* <Button onClick={() => updateUser()}>Update User</Button> */}
         {/* <Button onClick={() => getPassword()}>Get Password</Button> */}
       </div>
-      <UserInfo />
+      {/* <UserInfo displayName={displayName} /> */}
     </>
   );
 };

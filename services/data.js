@@ -15,10 +15,10 @@ const navLinks = [
     name: 'Daftar',
     path: '/Registration'
   },
-  {
-    name: 'Test',
-    path: '/TestLab'
-  },
+  // {
+  //   name: 'Test',
+  //   path: '/TestLab'
+  // },
   {
     name: 'Masuk',
     path: '/SignIn'

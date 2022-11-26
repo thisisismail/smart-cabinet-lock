@@ -140,7 +140,7 @@ const authStateChanged = async setUser => {
 // =================== Sign In & Sign Out Actions ============================
 
 const signInWithEmail = async (email, password) => {
-  console.log(email, password);
+  // console.log(email, password);
   return await signInWithEmailAndPassword(auth, email, password)
     .then(() => {
       console.log('Try to sign in with email and password');
@@ -151,7 +151,7 @@ const signInWithEmail = async (email, password) => {
 };
 
 const signUpWithEmail = async (email, password) => {
-  console.log(email, password);
+  // console.log(email, password);
   return await createUserWithEmailAndPassword(auth, email, password)
     .then(userRecord => {
       // See the UserRecord reference doc for the contents of userRecord.
