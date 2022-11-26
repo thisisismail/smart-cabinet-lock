@@ -14,12 +14,9 @@ const withoutProtected = Pages => {
     } else {
       console.log('you already logged in');
       // Prevent router from push when client is still rendering
-      if (typeof window === 'undefined') {
-        return null;
-      } else {
-        router.replace('/');
-        render: return <></>;
-      }
+      if (typeof window === 'undefined') return null;
+      router.replace('/');
+      render: return <></>;
     }
   };
 };
