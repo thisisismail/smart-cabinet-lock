@@ -28,28 +28,36 @@ const Accounts = () => {
     );
   if (!data) return <Loading />;
 
-  const colTitle = ['Nama', 'NPM', 'Jurusan', 'Laboratorium', 'Angkatan'];
-
   const accountsData = Object.keys(data)?.map(acc => (
     <Link key={data[acc].rfid} href={`/accounts/${data[acc].rfid}`}>
       <tr className="pt-4 cursor-pointer hover:bg-gray-100">
-        <td>{data[acc].name}</td>
-        <td>{data[acc].npm}</td>
-        <td>{data[acc].major}</td>
-        <td>{data[acc].lab}</td>
-        <td>{data[acc].year}</td>
+        <td className="w-max">{data[acc].name}</td>
+        <td className="block md:table-cell">{data[acc].npm}</td>
+        <td className="block md:table-cell">{data[acc].major}</td>
+        <td className="block md:table-cell">{data[acc].lab}</td>
+        <td className="block md:table-cell">{data[acc].year}</td>
       </tr>
     </Link>
   ));
 
   return (
     <>
-      <Table
-        title="Daftar Mahasiswa"
-        colTitle={colTitle}
-        dataBody={accountsData}
-      />
-      <div className="h-20"></div>
+      <div className="md:hidden">
+        <Table
+          title="Daftar Mahasiswa"
+          colTitle={['Nama', 'Info']}
+          dataBody={accountsData}
+        />
+        <div className="h-20"></div>
+      </div>
+      <div className="hidden md:block">
+        <Table
+          title="Daftar Mahasiswa"
+          colTitle={['Nama', 'NPM', 'Jurusan', 'Laboratorium', 'Angkatan']}
+          dataBody={accountsData}
+        />
+        <div className="h-20"></div>
+      </div>
     </>
   );
 };

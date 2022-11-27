@@ -46,7 +46,7 @@ const NavBar = () => {
 
   return (
     <>
-      <header className="sticky z-40 top-0 h-12 border-0 flex justify-between items-center bg-blue-900 rounded-b-lg px-4">
+      <header className="sticky z-40 top-0 h-12 border-0 flex justify-between items-center bg-blue-900 rounded-b-lg px-4 md:text-lg">
         <div className="border-0 md:hidden">
           <DropDownMenu navLinks={navLinks} />
         </div>

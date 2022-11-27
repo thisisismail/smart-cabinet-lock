@@ -16,10 +16,10 @@ const Layout = ({ children }) => {
     //assign value to global variable
     // <UserContext.Provider value={userName}>
     //   <LoadingPage.Provider value={{ loading, setLoading }}>
-    <div className="px-0 h-screen border-0 bg-yellow-600">
+    <div className="px-0 h-screen border-0 bg-yellow-600 overflow-auto">
       <NavBar />
-      <div className="mt-4 w-full border-0 border-black">
-        <div style={{ maxWidth: 1000 }} className="mx-auto">
+      <div className="mt-2 w-full border-0 border-black">
+        <div style={{ maxWidth: 1000 }} className="mx-auto px-2 md:px-0">
           {children}
         </div>
       </div>

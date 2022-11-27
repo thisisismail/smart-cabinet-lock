@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Card, CardBody, Typography } from '@material-tailwind/react';
-import { MdLogout } from 'react-icons/md';
+import { MdLogout, MdAccountCircle } from 'react-icons/md';
 import { signOut } from '../api/firebase/services/utilsFirebase';
 
 const UserInfo = props => {
@@ -9,9 +9,13 @@ const UserInfo = props => {
   const linkStyle = 'font-sans font-semibold';
 
   const userInfo = (
-    <Card style={{ maxWidth: 300 }} className="fixed right-0 top-14">
+    <Card
+      style={{ minWidth: 300 }}
+      className="fixed right-0 top-14 w-full md:w-min md:top-16"
+    >
       <CardBody className="flex flex-col gap-2">
-        <Typography variant="h5" color="blue" textGradient>
+        <Typography variant="h6" color="blue" textGradient className="flex flex-row items-center gap-2">
+          <MdAccountCircle size="30" color="black"/>
           {props.displayName ?? ''}
         </Typography>
         <Button

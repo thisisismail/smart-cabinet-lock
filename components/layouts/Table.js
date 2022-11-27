@@ -5,10 +5,15 @@ const TableData = props => {
     <>
       <Card>
         <CardBody>
-          <Typography variant="h5" color="blue" textGradient>
+          <Typography
+            variant="h5"
+            color="blue"
+            textGradient
+            className="text-lg md:text-xl"
+          >
             {props.title}
           </Typography>
-          <table className="w-full mt-2">
+          <table className={`w-full mt-2`}>
             <thead className="border-0">
               <tr className="border-0">
                 {props.colTitle.map(col => (

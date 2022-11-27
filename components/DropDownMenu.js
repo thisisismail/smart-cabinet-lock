@@ -23,9 +23,10 @@ const DropDownMenu = props => {
       return null;
     }
     return (
-      <MenuItem key={index} className="">
-        <Link href={item.path}>
+      <MenuItem key={index} className="" href={item.path}>
+        <Link href={item.path} className="w-full">
           <a
+            href={item.path}
             className={`${linkStyle} ${
               router.pathname === item.path ? 'text-yellow-600' : 'text-white'
             }`}
@@ -43,7 +44,7 @@ const DropDownMenu = props => {
           <GiElectric size={30} color="white" className="-ml-4" />
         </Button>
       </MenuHandler>
-      <MenuList className="bg-blue-900 rounded-xl md:hidden border-0 -mt-1 w-full">
+      <MenuList className="bg-blue-900 rounded-xl md:hidden border-0 -mt-0 w-full">
         {menu}
       </MenuList>
     </Menu>
