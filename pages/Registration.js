@@ -12,6 +12,7 @@ import {
 } from '../api/firebase/services/utilsFirebase';
 import RegisterForm from '../components/RegisterForm';
 import withProtected from '../higherOrderComponents/WithProtected';
+import { isEmailExist } from '../api/firebase/services/utilsFirebase';
 
 // import { useUser } from '../context/user';
 
@@ -109,16 +110,23 @@ const Registration = () => {
 
   const submitHandler = () => {
     // Add user to realtime database in firebase
-    addNewUser(user)
-      .then(() => {
-        setStatus(prevstates => ({ ...prevstates, color: 'green' }));
-        setStatus(prevstates => ({
-          ...prevstates,
-          text: 'Pendaftaran sukses'
-        }));
-      })
-      // .then(() => signOut());
-      .then(() => addAccount(user));
+    !isEmailExist(user.email) &&
+      addNewUser(user)
+        .then(() => {
+          setStatus(prevstates => ({ ...prevstates, color: 'green' }));
+          setStatus(prevstates => ({
+            ...prevstates,
+            text: 'Pendaftaran sukses'
+          }));
+        })
+        // .then(() => signOut());
+        .then(() => addAccount(user));
+    isEmailExist(user.email) &&
+      setStatus(prevstates => ({
+        ...prevstates,
+        text: 'Email sudah digunakan, gagal mendaftar',
+        color: 'red'
+      }));
   };
 
   return (
@@ -131,7 +139,9 @@ const Registration = () => {
         selectHandler={selectHandler}
         // Button properties => BtnWithAlert
         onClick={submitHandler}
-        callbackFunc={() => router.push('/accounts')}
+        callbackFunc={() => {
+          !isEmailExist(user.email) && router.push('/accounts');
+        }}
         setDisabled={Object.values(user).some(x => x === null || x === '')}
         message={status.text}
         alertColor={status.color}

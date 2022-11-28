@@ -11,7 +11,7 @@ const UserInfo = props => {
   const userInfo = (
     <Card
       style={{ minWidth: 300 }}
-      className="fixed right-0 top-14 w-full md:w-min md:top-16"
+      className="fixed right-0 top-14 w-full md:w-min"
     >
       <CardBody className="flex flex-col gap-2">
         <Typography variant="h6" color="blue" textGradient className="flex flex-row items-center gap-2">

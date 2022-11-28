@@ -189,6 +189,19 @@ const updateUser = userObj => {
   }).then(() => console.log('Display name updated'));
 };
 
+// =================== Check User Existance ============================
+const isEmailExist = async email => {
+  console.log(email);
+  await getAccounts().then(res => {
+    for (var key in res) {
+      if (res[key].email === email) {
+        return true;
+      }
+    }
+    return false;
+  });
+};
+
 export {
   getAccounts,
   addAccount,
@@ -204,7 +217,8 @@ export {
   signUpWithEmail,
   addNewUser,
   updateUser,
-  signOut
+  signOut,
+  isEmailExist
   // getPassword
 };
 
