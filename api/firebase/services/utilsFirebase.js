@@ -192,7 +192,7 @@ const updateUser = userObj => {
 // =================== Check User Existance ============================
 const isEmailExist = async email => {
   console.log(email);
-  await getAccounts().then(res => {
+  return getAccounts().then(res => {
     for (var key in res) {
       if (res[key].email === email) {
         return true;

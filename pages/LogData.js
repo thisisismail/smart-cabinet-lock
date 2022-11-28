@@ -45,7 +45,7 @@ const LogData = () => {
   return (
     <>
       <Table title="Riwayat Akses" colTitle={colTitle} dataBody={logsData} />
-         </>
+    </>
   );
 };
 

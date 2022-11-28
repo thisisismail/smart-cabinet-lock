@@ -110,23 +110,25 @@ const Registration = () => {
 
   const submitHandler = () => {
     // Add user to realtime database in firebase
-    !isEmailExist(user.email) &&
-      addNewUser(user)
-        .then(() => {
-          setStatus(prevstates => ({ ...prevstates, color: 'green' }));
-          setStatus(prevstates => ({
-            ...prevstates,
-            text: 'Pendaftaran sukses'
-          }));
-        })
-        // .then(() => signOut());
-        .then(() => addAccount(user));
-    isEmailExist(user.email) &&
-      setStatus(prevstates => ({
-        ...prevstates,
-        text: 'Email sudah digunakan, gagal mendaftar',
-        color: 'red'
-      }));
+    isEmailExist(user.email).then(res => {
+      !res &&
+        addNewUser(user)
+          .then(() => {
+            setStatus(prevstates => ({ ...prevstates, color: 'green' }));
+            setStatus(prevstates => ({
+              ...prevstates,
+              text: 'Pendaftaran sukses'
+            }));
+          })
+          .then(() => addAccount(user));
+      res &&
+        isEmailExist(user.email) &&
+        setStatus(prevstates => ({
+          ...prevstates,
+          text: 'Email sudah digunakan, gagal mendaftar',
+          color: 'red'
+        }));
+    });
   };
 
   return (
@@ -140,7 +142,12 @@ const Registration = () => {
         // Button properties => BtnWithAlert
         onClick={submitHandler}
         callbackFunc={() => {
-          !isEmailExist(user.email) && router.push('/accounts');
+          setStatus(prevstates => ({
+            ...prevstates,
+            color: 'blue',
+            text: 'Mengupload data'
+          }));
+          router.push('/accounts');
         }}
         setDisabled={Object.values(user).some(x => x === null || x === '')}
         message={status.text}

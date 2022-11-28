@@ -26,7 +26,6 @@ const RegisterForm = props => {
 
   const showPassword = () => {
     setShowpwd(!showpwd);
-    props.setDisabled = true;
   };
 
   const pwdIconAttr = {
