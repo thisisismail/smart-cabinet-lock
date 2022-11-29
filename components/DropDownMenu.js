@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { GiElectric } from 'react-icons/gi';
 import { useUser } from '../context/user';
+import Logo from '../public/Logo';
 
 const DropDownMenu = props => {
   const router = useRouter();
@@ -40,11 +41,11 @@ const DropDownMenu = props => {
   return (
     <Menu>
       <MenuHandler>
-        <Button variant="text" style={{ width: 20 }} className="border-0">
-          <GiElectric size={30} color="white" className="-ml-4" />
+        <Button variant="text" className="border-0 h-14 p-0">
+          <Logo />
         </Button>
       </MenuHandler>
-      <MenuList className="bg-blue-900 rounded-xl md:hidden border-0 -mt-0 w-full">
+      <MenuList className="bg-blue-900 rounded-xl md:hidden border-0 -mt-1 w-full">
         {menu}
       </MenuList>
     </Menu>

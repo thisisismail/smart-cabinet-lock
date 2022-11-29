@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { navLinks } from '../services/data.js';
+import Logo from '../public/Logo';
 import DropDownMenu from './DropDownMenu';
 import UserInfo from './UserInfo';
 // don't  forget to import the provider
@@ -37,7 +38,7 @@ const NavBar = () => {
               router.pathname === item.path ? 'text-yellow-600' : 'text-white'
             }`}
           >
-            {item.name}
+            {item.name === 'Home' ? <Logo /> : item.name}
           </a>
         </Link>
       </div>
@@ -51,7 +52,7 @@ const NavBar = () => {
           <DropDownMenu navLinks={navLinks} />
         </div>
         {menu}
-        {uid && <UserInfo displayName={displayName} uid={uid} />}
+        {uid && <UserInfo displayName={displayName} />}
         {/* <UserInfo /> */}
       </header>
     </>
