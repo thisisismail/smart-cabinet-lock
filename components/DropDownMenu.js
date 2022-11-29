@@ -7,7 +7,7 @@ import {
 } from '@material-tailwind/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { GiElectric } from 'react-icons/gi';
+// import { GiElectric } from 'react-icons/gi';
 import { useUser } from '../context/user';
 import Logo from '../public/Logo';
 
