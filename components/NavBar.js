@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { navLinks } from '../services/data.js';
-import Logo from '../public/Logo';
+import Logo from '../components/Logo';
 import DropDownMenu from './DropDownMenu';
 import UserInfo from './UserInfo';
 // don't  forget to import the provider

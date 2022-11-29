@@ -10,11 +10,7 @@ function MyApp({ Component, pageProps }) {
     <UserProvider>
       <Header>
         <title>EL©K</title>
-        <icon
-          rel="shortcut icon"
-          href="/favicon.ico"
-          type="ico"
-        />
+        <link rel="shortcut icon" href="/favicon.ico" type="ico" />
       </Header>
       <Layout>
         <AuthStateChangeProvider>

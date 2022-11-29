@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 // import { GiElectric } from 'react-icons/gi';
 import { useUser } from '../context/user';
-import Logo from '../public/Logo';
+import Logo from '../components/Logo';
 
 const DropDownMenu = props => {
   const router = useRouter();
