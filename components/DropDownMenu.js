@@ -42,7 +42,7 @@ const DropDownMenu = props => {
     <Menu>
       <MenuHandler>
         <Button variant="text" className="border-0 h-14 p-0">
-          <Logo />
+          <Logo height={40} width={40} />
         </Button>
       </MenuHandler>
       <MenuList className="bg-blue-900 rounded-xl md:hidden border-0 -mt-1 w-full">

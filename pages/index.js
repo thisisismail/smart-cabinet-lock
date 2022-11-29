@@ -1,6 +1,6 @@
-import { Typography } from '@material-tailwind/react';
 // import LoginCard from '../components/LoginCard';
 import Center from '../components/layouts/Centering';
+import Logo from '../components/Logo';
 
 // import { useUser } from '../context/user';
 
@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <div className="">
         <Center>
-          <Typography variant="h3">Home</Typography>
+          <Logo height={200} width={200} />
         </Center>
       </div>
     </>
