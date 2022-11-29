@@ -35,7 +35,7 @@ const NavBar = () => {
         <Link href={item.path}>
           <a
             className={`${linkStyle} ${
-              router.pathname === item.path ? 'text-yellow-600' : 'text-white'
+              router.pathname === item.path ? 'text-yellow-500' : 'text-white'
             }`}
           >
             {item.name === 'Home' ? <Logo height={40} width={40} /> : item.name}

@@ -4,13 +4,14 @@ import MyLogo from '../public/elocklogo.svg';
 
 const Logo = props => {
   return (
-    <div className="rounded-md overflow-hidden flex justify-center">
+    <div className="rounded-md overflow-hidden flex justify-center bg-yellow-500">
       <Image
         rel="svg"
         src={MyLogo}
         alt="gambar"
         width={props.width}
         height={props.height}
+        // className="rotate-90"
       />
     </div>
   );
