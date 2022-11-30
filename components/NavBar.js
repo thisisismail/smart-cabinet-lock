@@ -20,7 +20,7 @@ const NavBar = () => {
 
   const router = useRouter();
 
-  const linkStyle = 'font-sans font-semibold';
+  const linkStyle = 'font-sans font-semibold outline-0';
 
   const menu = navLinks.map((item, index) => {
     if (item.name === 'Masuk' && uid) {
@@ -29,7 +29,7 @@ const NavBar = () => {
     return (
       <div
         key={index}
-        className="hidden md:block"
+        className="hidden md:block outline-0"
         // style={{ width: item.name === 'Masuk' && 200 }}
       >
         <Link href={item.path}>

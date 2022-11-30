@@ -43,7 +43,6 @@ const addAccount = userObj => {
 
 const deleteAccount = async uid => {
   return remove(ref(dataDb, 'users/' + uid))
-    .then(res => console.log(res))
     .then(() => remove(ref(dataDb, 'passwords/' + uid)))
     .catch(err => console.log(err));
 };

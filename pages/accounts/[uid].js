@@ -93,8 +93,8 @@ const AccountDetail = () => {
 
   const { data, error } = useSWR(endpoint, fetcher);
 
-  const deleteData = () => {
-    deleteAccount()
+  const deleteData = uid => {
+    deleteAccount(uid)
       .then(() => console.log('Data deleted'))
       .then(() => router.back());
   };
@@ -138,7 +138,7 @@ const AccountDetail = () => {
 
   const deleteButton = (
     <>
-      <Button color="red" onClick={deleteData}>
+      <Button color="red" onClick={() => deleteData(uid)}>
         Delete
       </Button>
     </>
