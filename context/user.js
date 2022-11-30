@@ -4,7 +4,8 @@ import { useContext, createContext } from 'react';
 const InitialUserState = {
   email: null,
   uid: null,
-  displayName: null
+  displayName: null,
+  accessToken: null
 };
 
 const UserContext = createContext();

@@ -41,9 +41,10 @@ const addAccount = userObj => {
     });
 };
 
-const deleteAccount = async data => {
-  return remove(ref(dataDb, 'users/' + data))
+const deleteAccount = async uid => {
+  return remove(ref(dataDb, 'users/' + uid))
     .then(res => console.log(res))
+    .then(() => remove(ref(dataDb, 'passwords/' + uid)))
     .catch(err => console.log(err));
 };
 
@@ -124,7 +125,8 @@ const authStateChanged = async setUser => {
       setUser({
         uid: user.uid,
         email: user.email,
-        displayName: user.displayName
+        displayName: user.displayName,
+        accessToken: user.accessToken
       });
       // console.log(user);
       return user;
@@ -205,7 +207,6 @@ const isEmailExist = async email => {
 export {
   getAccounts,
   addAccount,
-  deleteAccount,
   authStateChanged,
   signupMode,
   getRFID,
@@ -218,7 +219,8 @@ export {
   addNewUser,
   updateUser,
   signOut,
-  isEmailExist
+  isEmailExist,
+  deleteAccount
   // getPassword
 };
 

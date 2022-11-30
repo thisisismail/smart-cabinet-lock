@@ -4,6 +4,7 @@ const TableData = props => {
   return (
     <>
       <Card>
+        {props.dataku}
         <CardBody>
           <Typography
             variant="h5"

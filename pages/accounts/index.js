@@ -3,20 +3,23 @@ import Link from 'next/link';
 import Table from '../../components/layouts/Table';
 import Loading from '../../components/Loading';
 import Centering from '../../components/layouts/Centering';
+import withProtected from '../../higherOrderComponents/WithProtected';
+import { useUser } from '../../context/user';
 // import LoadingStudentsData from '../components/loadings/LoadingStudentsData';
 
-const endpoint = `${process.env.databaseURL}/users.json`;
-
-// Don't forget to use return for each level to get the value inside
-const fetcher = async url => {
-  return await fetch(url)
-    .then(res => {
-      return res.json();
-    })
-    .catch(error => console.log(error));
-};
-
 const Accounts = () => {
+  const user = useUser();
+  const { accessToken } = user;
+  const endpoint = `${process.env.databaseURL}/users.json?auth=${accessToken}`;
+
+  // Don't forget to use return for each level to get the value inside
+  const fetcher = async url => {
+    return await fetch(url)
+      .then(res => {
+        return res.json();
+      })
+      .catch(error => console.log(error));
+  };
   // useSWR provides realtime update, but we should click anywhere within screen to get the update (sometimes)
   const { data, error } = useSWR(endpoint, fetcher);
 
@@ -62,4 +65,4 @@ const Accounts = () => {
   );
 };
 
-export default Accounts;
+export default withProtected(Accounts);
