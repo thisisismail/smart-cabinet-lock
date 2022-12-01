@@ -8,7 +8,7 @@ const navLinks = [
     path: '/LogData'
   },
   {
-    name: 'Data Mahasiswa',
+    name: 'Data Pengguna',
     path: '/accounts'
   },
   {

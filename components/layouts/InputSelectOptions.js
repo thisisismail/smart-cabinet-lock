@@ -12,7 +12,7 @@ const SelectInput = props => {
   ));
 
   return (
-    <Select label={props.label} size="lg" onChange={props.onChange}>
+    <Select label={props.label} size="lg" onChange={props.onChange} className="rounded-md">
       {OptionsList}
     </Select>
   );

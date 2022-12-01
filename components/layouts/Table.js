@@ -17,8 +17,8 @@ const TableData = props => {
           <table className={`w-full mt-2`}>
             <thead className="border-0">
               <tr className="border-0">
-                {props.colTitle.map(col => (
-                  <th key={col}>{col}</th>
+                {props.colTitle.map((col, index) => (
+                  <th key={index}>{col}</th>
                 ))}
               </tr>
             </thead>

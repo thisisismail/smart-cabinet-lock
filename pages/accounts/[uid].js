@@ -156,6 +156,7 @@ const AccountDetail = () => {
     <>
       <AccountInfo
         // Form properties => RegisterForm
+        currentData={data}
         user={{ user }}
         msg={msg}
         inputHandler={inputHandler}
