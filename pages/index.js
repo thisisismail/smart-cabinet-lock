@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <div className="">
         <Center>
-          <Logo height={200} width={200} />
+          <Logo height={200} width={200} bgColor='bg-yellow-500'/>
         </Center>
       </div>
     </>

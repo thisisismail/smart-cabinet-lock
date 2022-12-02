@@ -4,7 +4,9 @@ import MyLogo from '../public/elocklogo.svg';
 
 const Logo = props => {
   return (
-    <div className="rounded-md overflow-hidden flex justify-center bg-yellow-500">
+    <div
+      className={`rounded-md overflow-hidden flex justify-center ${props.bgColor}`}
+    >
       <Image
         rel="svg"
         src={MyLogo}
