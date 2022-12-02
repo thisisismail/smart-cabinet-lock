@@ -112,15 +112,13 @@ const Registration = () => {
     // Add user to realtime database in firebase
     isEmailExist(user.email).then(res => {
       !res &&
-        addNewUser(user)
-          .then(() => {
-            setStatus(prevstates => ({ ...prevstates, color: 'green' }));
-            setStatus(prevstates => ({
-              ...prevstates,
-              text: 'Pendaftaran sukses'
-            }));
-          })
-          .then(() => addAccount(user));
+        addNewUser(user).then(() => {
+          setStatus(prevstates => ({ ...prevstates, color: 'green' }));
+          setStatus(prevstates => ({
+            ...prevstates,
+            text: 'Pendaftaran sukses'
+          }));
+        });
       res &&
         isEmailExist(user.email) &&
         setStatus(prevstates => ({

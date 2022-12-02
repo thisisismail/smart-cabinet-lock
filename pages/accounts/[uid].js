@@ -9,13 +9,12 @@ import { useUser } from '../../context/user';
 import withProtected from '../../higherOrderComponents/WithProtected';
 import {
   // signOut,
-  addNewUser,
+  updateAccount,
   signupMode,
   setRFID,
   setStatusRFID,
   getStatusRFID,
   getRFID,
-  addAccount,
   deleteAccount
 } from '../../api/firebase/services/utilsFirebase';
 import { isEmailExist } from '../../api/firebase/services/utilsFirebase';
@@ -25,6 +24,10 @@ const AccountDetail = () => {
   const User = useUser();
   const { uid } = router.query;
   const { accessToken } = User;
+  // eslint-disable-next-line no-unused-vars
+  const [edit, setEdit] = React.useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [newRFID, setNewRFID] = React.useState(false);
   const [msg, setMsg] = React.useState('Tap your card to machine');
   const [status, setStatus] = React.useState({
     color: 'blue',
@@ -42,6 +45,12 @@ const AccountDetail = () => {
   });
 
   React.useEffect(() => {
+    if (!newRFID) {
+      return () => {
+        router.events.off('routeChangeStart', exitingFunction);
+      };
+    }
+
     navigator.onLine &&
       getStatusRFID().then(response => {
         response === 1
@@ -82,6 +91,7 @@ const AccountDetail = () => {
   }, []);
 
   const endpoint = `${process.env.databaseURL}/users/${uid}.json?auth=${accessToken}`;
+  const password = `${process.env.databaseURL}/passwords/${uid}.json?auth=${accessToken}`;
 
   const fetcher = async url => {
     return await fetch(url)
@@ -91,7 +101,8 @@ const AccountDetail = () => {
       .catch(error => console.log(error));
   };
 
-  const { data, error } = useSWR(endpoint, fetcher);
+  const { data: opened, error: errorOpened } = useSWR(endpoint, fetcher);
+  const { data: closed, error: errorClosed } = useSWR(password, fetcher);
 
   const deleteData = uid => {
     deleteAccount(uid)
@@ -117,15 +128,13 @@ const AccountDetail = () => {
     // Add user to realtime database in firebase
     isEmailExist(user.email).then(res => {
       !res &&
-        addNewUser(user)
-          .then(() => {
-            setStatus(prevstates => ({ ...prevstates, color: 'green' }));
-            setStatus(prevstates => ({
-              ...prevstates,
-              text: 'Pendaftaran sukses'
-            }));
-          })
-          .then(() => addAccount(user));
+        updateAccount(user, false).then(() => {
+          setStatus(prevstates => ({ ...prevstates, color: 'green' }));
+          setStatus(prevstates => ({
+            ...prevstates,
+            text: 'Pendaftaran sukses'
+          }));
+        });
       res &&
         isEmailExist(user.email) &&
         setStatus(prevstates => ({
@@ -136,6 +145,10 @@ const AccountDetail = () => {
     });
   };
 
+  const prefilledForm = userObj => {
+    setUser(userObj);
+  };
+
   const deleteButton = (
     <>
       <Button color="red" onClick={() => deleteData(uid)}>
@@ -144,23 +157,27 @@ const AccountDetail = () => {
     </>
   );
 
-  if (error)
+  if (errorOpened || errorClosed)
     return (
       <Centering>
         <h1>Error</h1>
       </Centering>
     );
-  if (!data) return <Loading />;
+  if (!opened || !closed) return <Loading />;
 
   return (
     <>
+      {/* <Switch color="blue" defaultUnchecked /> */}
+      {/* <div className="border-2 border-red-400"> */}
       <AccountInfo
         // Form properties => RegisterForm
-        currentData={data}
+        pwd={closed}
+        currentData={Object.assign(opened, closed)}
         user={{ user }}
         msg={msg}
         inputHandler={inputHandler}
         selectHandler={selectHandler}
+        prefilledHandler={prefilledForm}
         deleteButton={deleteButton}
         // Button properties => BtnWithAlert
         onClick={submitHandler}
@@ -176,6 +193,7 @@ const AccountDetail = () => {
         message={status.text}
         alertColor={status.color}
       />
+      {/* </div> */}
     </>
   );
 };

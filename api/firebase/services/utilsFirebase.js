@@ -47,6 +47,19 @@ const deleteAccount = async uid => {
     .catch(err => console.log(err));
 };
 
+const updateAccount = (userObj, updateRFID) => {
+  if (updateRFID) {
+    return addNewUser(userObj)
+      .then(() => deleteAccount(userObj.rfid))
+      .then(() => remove(ref(dataDb, 'passwords/' + userObj.rfid)))
+      .then(() => {
+        console.log('Data updated and RFID updated');
+      });
+  }
+
+  return addNewUser(userObj).then(() => console.log('Data updated'));
+};
+
 // =================== Password Actions ============================
 
 const storePassword = userObj => {
@@ -206,6 +219,7 @@ const isEmailExist = async email => {
 export {
   getAccounts,
   addAccount,
+  updateAccount,
   authStateChanged,
   signupMode,
   getRFID,

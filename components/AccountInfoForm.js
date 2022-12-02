@@ -31,6 +31,11 @@ const AccountInfoForm = props => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [record]);
 
+  React.useEffect(() => {
+    props.prefilledHandler(props.currentData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const showPassword = () => {
     setShowpwd(!showpwd);
   };
@@ -86,7 +91,6 @@ const AccountInfoForm = props => {
           label={input.label}
           options={input.options}
           onChange={props.selectHandler}
-          defaultValue={props.currentData[input.name]}
         />
       ) : (
         <div className="w-full h-full relative border-0 border-red-600">
@@ -105,7 +109,7 @@ const AccountInfoForm = props => {
             value={props.currentData[input.name]}
             readOnly={true}
             // tabindex will prevent tab to stop in this input
-            tabindex={-1}
+            tabIndex={-1}
           />
         </div>
       )}
