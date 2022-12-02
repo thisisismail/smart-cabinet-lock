@@ -7,8 +7,7 @@ import {
   setRFID,
   setStatusRFID,
   getStatusRFID,
-  getRFID,
-  addAccount
+  getRFID
 } from '../api/firebase/services/utilsFirebase';
 import RegisterForm from '../components/RegisterForm';
 import withProtected from '../higherOrderComponents/WithProtected';
