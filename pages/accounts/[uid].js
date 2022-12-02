@@ -193,6 +193,7 @@ const AccountDetail = () => {
         message={status.text}
         alertColor={status.color}
       />
+      <button onClick={() => console.log(user)}>Click Me</button>
       {/* </div> */}
     </>
   );
