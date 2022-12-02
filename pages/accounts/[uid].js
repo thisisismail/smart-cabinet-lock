@@ -1,5 +1,5 @@
 import React from 'react';
-import useSWR from 'swr';
+import useSWR, { useSWRConfig } from 'swr';
 import { useRouter } from 'next/router';
 import { Button } from '@material-tailwind/react';
 import AccountInfo from '../../components/AccountInfoForm';
@@ -43,6 +43,8 @@ const AccountDetail = () => {
     password: '',
     email: ''
   });
+  // Reupdating new value from endpoints
+  const { mutate } = useSWRConfig();
 
   React.useEffect(() => {
     if (!newRFID) {
@@ -127,22 +129,32 @@ const AccountDetail = () => {
   const submitHandler = () => {
     // Add user to realtime database in firebase
     return opened.email === user.email
-      ? updateAccount(user, false).then(() => {
-          setStatus(prevstates => ({ ...prevstates, color: 'green' }));
-          setStatus(prevstates => ({
-            ...prevstates,
-            text: 'Pembaruan sukses'
-          }));
-        })
+      ? updateAccount(user, false)
+          .then(() => {
+            setStatus(prevstates => ({ ...prevstates, color: 'green' }));
+            setStatus(prevstates => ({
+              ...prevstates,
+              text: 'Pembaruan sukses'
+            }));
+          })
+          .then(() => {
+            mutate(endpoint);
+            mutate(password);
+          })
       : isEmailExist(user.email).then(res => {
           !res &&
-            updateAccount(user, false).then(() => {
-              setStatus(prevstates => ({ ...prevstates, color: 'green' }));
-              setStatus(prevstates => ({
-                ...prevstates,
-                text: 'Pembaruan sukses'
-              }));
-            });
+            updateAccount(user, false)
+              .then(() => {
+                setStatus(prevstates => ({ ...prevstates, color: 'green' }));
+                setStatus(prevstates => ({
+                  ...prevstates,
+                  text: 'Pembaruan sukses'
+                }));
+              })
+              .then(() => {
+                mutate(endpoint);
+                mutate(password);
+              });
           res &&
             isEmailExist(user.email) &&
             setStatus(prevstates => ({
@@ -195,7 +207,6 @@ const AccountDetail = () => {
             color: 'blue',
             text: 'Mengupload data'
           }));
-          // router.push(`/accounts/${opened.rfid}`);
           router.push('/accounts');
         }}
         setDisabled={Object.values(user).some(x => x === null || x === '')}
