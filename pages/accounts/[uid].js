@@ -46,9 +46,7 @@ const AccountDetail = () => {
 
   React.useEffect(() => {
     if (!newRFID) {
-      return () => {
-        router.events.off('routeChangeStart', exitingFunction);
-      };
+      return () => {};
     }
 
     navigator.onLine &&
@@ -87,8 +85,10 @@ const AccountDetail = () => {
   });
 
   React.useEffect(() => {
-    signupMode(1);
-  }, []);
+    if (newRFID) {
+      signupMode(1);
+    }
+  }, [newRFID]);
 
   const endpoint = `${process.env.databaseURL}/users/${uid}.json?auth=${accessToken}`;
   const password = `${process.env.databaseURL}/passwords/${uid}.json?auth=${accessToken}`;
@@ -126,23 +126,31 @@ const AccountDetail = () => {
 
   const submitHandler = () => {
     // Add user to realtime database in firebase
-    isEmailExist(user.email).then(res => {
-      !res &&
-        updateAccount(user, false).then(() => {
+    return opened.email === user.email
+      ? updateAccount(user, false).then(() => {
           setStatus(prevstates => ({ ...prevstates, color: 'green' }));
           setStatus(prevstates => ({
             ...prevstates,
-            text: 'Pendaftaran sukses'
+            text: 'Pembaruan sukses'
           }));
+        })
+      : isEmailExist(user.email).then(res => {
+          !res &&
+            updateAccount(user, false).then(() => {
+              setStatus(prevstates => ({ ...prevstates, color: 'green' }));
+              setStatus(prevstates => ({
+                ...prevstates,
+                text: 'Pembaruan sukses'
+              }));
+            });
+          res &&
+            isEmailExist(user.email) &&
+            setStatus(prevstates => ({
+              ...prevstates,
+              text: 'Email sudah digunakan, gagal mendaftar',
+              color: 'red'
+            }));
         });
-      res &&
-        isEmailExist(user.email) &&
-        setStatus(prevstates => ({
-          ...prevstates,
-          text: 'Email sudah digunakan, gagal mendaftar',
-          color: 'red'
-        }));
-    });
   };
 
   const prefilledForm = userObj => {
@@ -187,6 +195,7 @@ const AccountDetail = () => {
             color: 'blue',
             text: 'Mengupload data'
           }));
+          // router.push(`/accounts/${opened.rfid}`);
           router.push('/accounts');
         }}
         setDisabled={Object.values(user).some(x => x === null || x === '')}
