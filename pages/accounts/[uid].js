@@ -5,6 +5,7 @@ import { Button } from '@material-tailwind/react';
 import AccountInfo from '../../components/AccountInfoForm';
 import Centering from '../../components/layouts/Centering';
 import Loading from '../../components/Loading';
+import SwitchBtn from '../../components/SwitchButton';
 import { useUser } from '../../context/user';
 import withProtected from '../../higherOrderComponents/WithProtected';
 import {
@@ -24,8 +25,8 @@ const AccountDetail = () => {
   const User = useUser();
   const { uid } = router.query;
   const { accessToken } = User;
-  // eslint-disable-next-line no-unused-vars
   const [edit, setEdit] = React.useState(false);
+  const [editMsg, setEditMsg] = React.useState(false);
   // eslint-disable-next-line no-unused-vars
   const [newRFID, setNewRFID] = React.useState(false);
   const [msg, setMsg] = React.useState('Tap your card to machine');
@@ -91,6 +92,10 @@ const AccountDetail = () => {
       signupMode(1);
     }
   }, [newRFID]);
+
+  // React.useEffect(() => {
+  //   console.log(editMsg);
+  // }, [editMsg]);
 
   const endpoint = `${process.env.databaseURL}/users/${uid}.json?auth=${accessToken}`;
   const password = `${process.env.databaseURL}/passwords/${uid}.json?auth=${accessToken}`;
@@ -165,16 +170,33 @@ const AccountDetail = () => {
         });
   };
 
-  const prefilledForm = userObj => {
-    setUser(userObj);
+  const notifToEdit = () => {
+    console.log('Switch on button to edit');
+    setEditMsg(true);
+  };
+
+  const switchBtnHandler = () => {
+    setEditMsg(false);
+    setEdit(!edit);
   };
 
   const deleteButton = (
     <>
-      <Button color="red" onClick={() => deleteData(uid)}>
+      <Button
+        tabIndex={edit ? 0 : -1}
+        color="red"
+        onClick={() => deleteData(uid)}
+      >
         Delete
       </Button>
     </>
+  );
+
+  const formBlocker = (
+    <div
+      onClick={() => notifToEdit()}
+      className="w-full border-0 border-blue-700 absolute z-50 h-full text-center select-none left-0 top-0"
+    ></div>
   );
 
   if (errorOpened || errorClosed)
@@ -187,9 +209,13 @@ const AccountDetail = () => {
 
   return (
     <>
-      {/* <Switch color="blue" defaultUnchecked /> */}
-      {/* <div className="border-2 border-red-400"> */}
       <AccountInfo
+        // Switch between editable and not
+        switchButton={
+          <SwitchBtn onClick={switchBtnHandler} edit={edit} editMsg={editMsg} />
+        }
+        tabIndex={edit ? 0 : -1}
+        formBlocker={edit ? '' : formBlocker}
         // Form properties => RegisterForm
         pwd={closed}
         currentData={Object.assign(opened, closed)}
@@ -197,7 +223,7 @@ const AccountDetail = () => {
         msg={msg}
         inputHandler={inputHandler}
         selectHandler={selectHandler}
-        prefilledHandler={prefilledForm}
+        prefilledHandler={userObj => setUser(userObj)}
         deleteButton={deleteButton}
         // Button properties => BtnWithAlert
         onClick={submitHandler}

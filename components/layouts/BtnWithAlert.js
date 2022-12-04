@@ -37,6 +37,7 @@ const BtnWithAlert = props => {
         </div>
       </div>
       <Button
+        tabIndex={props.tabIndex}
         className="w-full"
         color={props.btnColor}
         disabled={props.setDisabled}

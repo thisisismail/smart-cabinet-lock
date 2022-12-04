@@ -5,7 +5,7 @@ import { BiHide, BiShow } from 'react-icons/bi';
 import { formInputs } from '../services/data';
 import SelectInput from './layouts/InputSelectOptions';
 import SubmitBtn from './layouts/BtnWithAlert';
-import { checkEmail } from '../services/utils';
+import { checkEmail, isObjEqual } from '../services/utils';
 
 const AccountInfoForm = props => {
   const [showpwd, setShowpwd] = React.useState(false);
@@ -63,6 +63,7 @@ const AccountInfoForm = props => {
       {!input.options ? (
         <div className="w-full">
           <Input
+            tabIndex={props.tabIndex}
             defaultValue={props.currentData[input.name]}
             value={props.user[input.name]}
             label={input.name !== 'rfid' ? input.label : props.msg}
@@ -87,10 +88,10 @@ const AccountInfoForm = props => {
         </div>
       ) : editSelect[input.name] ? (
         <SelectInput
+          {...props}
           name={input.name}
           label={input.label}
           options={input.options}
-          onChange={props.selectHandler}
         />
       ) : (
         <div className="w-full h-full relative border-0 border-red-600">
@@ -123,15 +124,22 @@ const AccountInfoForm = props => {
           <Typography variant="h5" color="blue" textGradient>
             Detail Pengguna
           </Typography>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-row gap-4">{props.switchButton}</div>
+          {/* {props.blockerDiv} */}
+          <div className="flex flex-col gap-2 relative">
+            {props.formBlocker}
             {InputsForm}
             <SubmitBtn
               title="Perbarui"
               {...props}
-              setDisabled={props.setDisabled || error.email !== null}
+              setDisabled={
+                props.setDisabled ||
+                error.email !== null ||
+                isObjEqual(props.user.user, props.currentData)
+              }
             />
+            {props.deleteButton}
           </div>
-          {props.deleteButton}
         </CardBody>
       </Card>
     </>
