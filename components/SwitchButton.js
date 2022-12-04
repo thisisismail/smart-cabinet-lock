@@ -19,7 +19,7 @@ const SwitchButton = props => {
   }, [props.editMsg]);
 
   const clickHandler = () => {
-    props.onClick();
+    props.switchBtnHandler();
   };
 
   const circleAnimation = () => {
@@ -28,7 +28,7 @@ const SwitchButton = props => {
     setTimeout(() => {
       setAnimation('');
       setLabel('');
-    }, 2000);
+    }, 1000);
   };
 
   return (
@@ -37,7 +37,7 @@ const SwitchButton = props => {
         onClick={() => clickHandler()}
         label={props.editMsg ? `Ketuk untuk edit` : 'Edit'}
         labelProps={{ className: `${label}` }}
-        circleProps={{ className: `${animation}` }}
+        circleProps={{ className: `shadow-transparent ${animation}` }}
       />
     </div>
   );

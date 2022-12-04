@@ -1,22 +1,18 @@
 import React from 'react';
 import useSWR, { useSWRConfig } from 'swr';
 import { useRouter } from 'next/router';
-import { Button } from '@material-tailwind/react';
 import AccountInfo from '../../components/AccountInfoForm';
 import Centering from '../../components/layouts/Centering';
 import Loading from '../../components/Loading';
-import SwitchBtn from '../../components/SwitchButton';
 import { useUser } from '../../context/user';
 import withProtected from '../../higherOrderComponents/WithProtected';
 import {
-  // signOut,
   updateAccount,
   signupMode,
   setRFID,
   setStatusRFID,
   getStatusRFID,
-  getRFID,
-  deleteAccount
+  getRFID
 } from '../../api/firebase/services/utilsFirebase';
 import { isEmailExist } from '../../api/firebase/services/utilsFirebase';
 
@@ -44,6 +40,7 @@ const AccountDetail = () => {
     password: '',
     email: ''
   });
+
   // Reupdating new value from endpoints
   const { mutate } = useSWRConfig();
 
@@ -93,10 +90,6 @@ const AccountDetail = () => {
     }
   }, [newRFID]);
 
-  // React.useEffect(() => {
-  //   console.log(editMsg);
-  // }, [editMsg]);
-
   const endpoint = `${process.env.databaseURL}/users/${uid}.json?auth=${accessToken}`;
   const password = `${process.env.databaseURL}/passwords/${uid}.json?auth=${accessToken}`;
 
@@ -110,12 +103,6 @@ const AccountDetail = () => {
 
   const { data: opened, error: errorOpened } = useSWR(endpoint, fetcher);
   const { data: closed, error: errorClosed } = useSWR(password, fetcher);
-
-  const deleteData = uid => {
-    deleteAccount(uid)
-      .then(() => console.log('Data deleted'))
-      .then(() => router.back());
-  };
 
   // detecting as user navigate to different page within or outside our website
   // to resetting the signup mode to 0 A.K.A off
@@ -180,18 +167,6 @@ const AccountDetail = () => {
     setEdit(!edit);
   };
 
-  const deleteButton = (
-    <>
-      <Button
-        tabIndex={edit ? 0 : -1}
-        color="red"
-        onClick={() => deleteData(uid)}
-      >
-        Delete
-      </Button>
-    </>
-  );
-
   const formBlocker = (
     <div
       onClick={() => notifToEdit()}
@@ -211,9 +186,9 @@ const AccountDetail = () => {
     <>
       <AccountInfo
         // Switch between editable and not
-        switchButton={
-          <SwitchBtn onClick={switchBtnHandler} edit={edit} editMsg={editMsg} />
-        }
+        edit={edit}
+        editMsg={editMsg}
+        switchBtnHandler={switchBtnHandler}
         tabIndex={edit ? 0 : -1}
         formBlocker={edit ? '' : formBlocker}
         // Form properties => RegisterForm
@@ -224,7 +199,6 @@ const AccountDetail = () => {
         inputHandler={inputHandler}
         selectHandler={selectHandler}
         prefilledHandler={userObj => setUser(userObj)}
-        deleteButton={deleteButton}
         // Button properties => BtnWithAlert
         onClick={submitHandler}
         callbackFunc={() => {

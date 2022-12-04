@@ -1,5 +1,5 @@
 // import styles from '../styles/Loading.module.css';
-import { GiElectric } from 'react-icons/gi';
+import Logo from '../components/Logo';
 
 const Loading = () => {
   return (
@@ -9,7 +9,7 @@ const Loading = () => {
         <div className="flex items-center justify-center border-0 border-red w-full h-full">
           {/* Get styling data from css file */}
           {/* <div id={styles.current}> */}
-          <GiElectric size={100} className="animate-bounce" />
+          <Logo width={200} height={200} animation={'animate-bounce'} />
           {/* </div> */}
         </div>
       </div>

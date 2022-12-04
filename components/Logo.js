@@ -5,7 +5,7 @@ import MyLogo from '../public/elocklogo.svg';
 const Logo = props => {
   return (
     <div
-      className={`rounded-md overflow-hidden flex justify-center ${props.bgColor}`}
+      className={`rounded-md overflow-hidden flex justify-center ${props.bgColor} ${props.animation}`}
     >
       <Image
         rel="svg"
@@ -13,7 +13,6 @@ const Logo = props => {
         alt="gambar"
         width={props.width}
         height={props.height}
-        // className="rotate-90"
       />
     </div>
   );

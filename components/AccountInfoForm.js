@@ -5,6 +5,8 @@ import { BiHide, BiShow } from 'react-icons/bi';
 import { formInputs } from '../services/data';
 import SelectInput from './layouts/InputSelectOptions';
 import SubmitBtn from './layouts/BtnWithAlert';
+import DeleteBtn from './DeleteButton';
+import SwitchBtn from './SwitchButton';
 import { checkEmail, isObjEqual } from '../services/utils';
 
 const AccountInfoForm = props => {
@@ -124,8 +126,9 @@ const AccountInfoForm = props => {
           <Typography variant="h5" color="blue" textGradient>
             Detail Pengguna
           </Typography>
-          <div className="flex flex-row gap-4">{props.switchButton}</div>
-          {/* {props.blockerDiv} */}
+          <div className="flex flex-row gap-4">
+            <SwitchBtn {...props} />
+          </div>
           <div className="flex flex-col gap-2 relative">
             {props.formBlocker}
             {InputsForm}
@@ -138,7 +141,7 @@ const AccountInfoForm = props => {
                 isObjEqual(props.user.user, props.currentData)
               }
             />
-            {props.deleteButton}
+            <DeleteBtn {...props} />
           </div>
         </CardBody>
       </Card>
