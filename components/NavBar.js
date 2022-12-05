@@ -38,11 +38,7 @@ const NavBar = () => {
               router.pathname === item.path ? 'text-yellow-500' : 'text-white'
             }`}
           >
-            {item.name === 'Home' ? (
-              <Logo height={40} width={40} bgColor="bg-white" />
-            ) : (
-              item.name
-            )}
+            {item.name === 'Home' ? <Logo height={40} width={40} /> : item.name}
           </a>
         </Link>
       </div>

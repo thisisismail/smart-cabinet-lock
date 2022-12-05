@@ -29,7 +29,7 @@ const DropDownMenu = props => {
           <a
             href={item.path}
             className={`${linkStyle} ${
-              router.pathname === item.path ? 'text-yellow-600' : 'text-white'
+              router.pathname === item.path ? 'text-yellow-700' : 'text-blue-900'
             }`}
           >
             {item.name}
@@ -41,11 +41,11 @@ const DropDownMenu = props => {
   return (
     <Menu>
       <MenuHandler>
-        <Button variant="text" className="border-0 h-14 p-0">
-          <Logo height={40} width={40} />
+        <Button variant="text" className="border-0 h-12 p-0">
+          <Logo height={40} width={40}/>
         </Button>
       </MenuHandler>
-      <MenuList className="bg-blue-900 rounded-xl md:hidden border-0 -mt-3 rounded-t-none w-full drop-shadow-xl border-b-2 border-blue-900">
+      <MenuList className="bg-white rounded-xl md:hidden border-0 -mt-1 rounded-t-none w-full drop-shadow-xl">
         {menu}
       </MenuList>
     </Menu>
