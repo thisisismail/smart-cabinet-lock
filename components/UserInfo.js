@@ -11,11 +11,16 @@ const UserInfo = props => {
   const userInfo = (
     <Card
       style={{ minWidth: 300 }}
-      className="fixed right-0 top-14 w-full md:w-min"
+      className="fixed right-0 top-14 w-full md:w-min -mt-2 pt-2 rounded-t-none md:mt-0 md:pt-0 md:rounded-t-xl md:right-2"
     >
       <CardBody className="flex flex-col gap-2">
-        <Typography variant="h6" color="blue" textGradient className="flex flex-row items-center gap-2">
-          <MdAccountCircle size="30" color="black"/>
+        <Typography
+          variant="h6"
+          color="blue"
+          textGradient
+          className="flex flex-row items-center gap-2"
+        >
+          <MdAccountCircle size="30" color="black" />
           {props.displayName ?? ''}
         </Typography>
         <Button

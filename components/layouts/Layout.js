@@ -1,4 +1,5 @@
 import NavBar from '../NavBar';
+import { useRouter } from 'next/router';
 
 // // create global variable provider using react context
 // export const UserContext = createContext();
@@ -11,6 +12,7 @@ const Layout = ({ children }) => {
   // if (true) {
   //   return <>kocakkkk</>;
   // }
+  const router = useRouter();
 
   return (
     //assign value to global variable
@@ -18,10 +20,12 @@ const Layout = ({ children }) => {
     //   <LoadingPage.Provider value={{ loading, setLoading }}>
     <div className="px-0 h-screen border-0 bg-yellow-500 overflow-auto">
       <NavBar />
-      <div className="mt-2 w-full border-0 border-black">
+      <div className="mt-8 w-full border-0 border-black">
         <div
-          style={{ maxWidth: 1100 }}
-          className="mx-auto px-2 md:px-0 border-0"
+          style={router.pathname === '/' ? {} : { maxWidth: 1100 }}
+          className={`${
+            router.pathname === '/' ? '' : 'px-2'
+          } mx-auto  border-0`}
         >
           {children}
         </div>
