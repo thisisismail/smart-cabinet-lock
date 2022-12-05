@@ -38,7 +38,7 @@ const NavBar = () => {
               router.pathname === item.path ? 'text-yellow-500' : 'text-white'
             }`}
           >
-            {item.name === 'Home' ? <Logo height={40} width={40} /> : item.name}
+            {item.name === 'Home' ? <Logo height={50} width={50} /> : item.name}
           </a>
         </Link>
       </div>
@@ -47,7 +47,7 @@ const NavBar = () => {
 
   return (
     <>
-      <header className="sticky z-40 top-0 h-12 border-0 flex justify-between items-center bg-blue-900 px-4 md:text-lg">
+      <header className="sticky z-50 top-0 h-16 border-0 flex justify-between items-center bg-blue-900 px-4 md:text-lg">
         <div className="border-0 md:hidden">
           <DropDownMenu navLinks={navLinks} />
         </div>
