@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import MyLogo from '../public/elocklogo.svg';
+// import Image from 'next/image';
+// import MyLogo from '../public/elocklogo.svg';
 import ElockLogo from '../public/ElockLogo';
 // import Icon from 'next/icon';
 
