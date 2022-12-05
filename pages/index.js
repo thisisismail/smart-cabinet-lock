@@ -5,23 +5,18 @@ import bannerImg from '../public/Contactless Transction/main-banner-landingpage.
 // import Loading from '../components/Loading';
 
 export default function Home() {
-  const [loading, setLoading] = React.useState(
-    <div className="w-full h-full border-0 animate-pulse rounded-md bg-grey-200 flex justify-center items-center"></div>
-  );
-  const [display, setDisplay] = React.useState('hidden');
-
-  const myClass = `object-contain w-full h-full rounded-xl border-0 ${display}`;
+  const myClass = `object-contain w-full h-full rounded-xl border-2`;
 
   return (
     <>
-      {/* <Loading /> */}
-      <div className="border-0 flex flex-col xl:flex-row-reverse items-center justify-between xl:h-96">
+      <div className="border-0">
         <div
           style={{ maxWidth: 800 }}
-          className="h-full w-full bg-blue-0 border-0 border-red-300 flex justify-center xl:justify-start"
+          className=" border-0 mx-auto aspect-video"
         >
-          {loading}
+          {/* {loading} */}
           <Image
+            placeholder="blur"
             rel="svg"
             src={bannerImg}
             alt="banner"
@@ -33,9 +28,9 @@ export default function Home() {
             }}
           ></Image>
         </div>
-        <div
+        {/* <div
           style={{ maxWidth: 800 }}
-          className="w-full px-4 py-6 flex flex-col justify-between gap-3 "
+          className="border-2"
         >
           <h1 className="text-right font-mono font-bold text-green-700 text-3xl md:text-5xl">
             Temukan dan kembangkan potensi dirimu dan raih masa depan cemerlang
@@ -47,7 +42,7 @@ export default function Home() {
             <span className="text-green-600 font-bold">Karir</span> dan
             #RaihKarirSekarang
           </h5>
-        </div>
+        </div> */}
       </div>
     </>
   );
