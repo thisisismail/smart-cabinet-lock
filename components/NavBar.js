@@ -10,10 +10,6 @@ import UserInfo from './UserInfo';
 import { useUser } from '../context/user';
 
 const NavBar = () => {
-  // getting the value from context provider
-  // const value = React.useContext(UserContext);
-  // const { loading, setLoading } = React.useContext(LoadingPage);
-
   const user = useUser();
 
   const { uid, displayName } = user;
@@ -27,11 +23,7 @@ const NavBar = () => {
       return null;
     }
     return (
-      <div
-        key={index}
-        className="hidden md:block outline-0"
-        // style={{ width: item.name === 'Masuk' && 200 }}
-      >
+      <div key={index} className="hidden md:block outline-0">
         <Link href={item.path}>
           <a
             className={`${linkStyle} ${
@@ -53,7 +45,6 @@ const NavBar = () => {
         </div>
         {menu}
         {uid && <UserInfo displayName={displayName} />}
-        {/* <UserInfo /> */}
       </header>
     </>
   );

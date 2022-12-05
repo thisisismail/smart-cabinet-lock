@@ -15,6 +15,7 @@ const AuthStateChangeProvider = props => {
     // setLoading(false);
     // setUser({ email: user.email, uid: user.uid });
     // console.log(user);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // return loading ? <Loading /> : <></>;

@@ -7,7 +7,6 @@ import {
 } from '@material-tailwind/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-// import { GiElectric } from 'react-icons/gi';
 import { useUser } from '../context/user';
 import Logo from '../components/Logo';
 
@@ -40,6 +39,7 @@ const DropDownMenu = props => {
       </MenuItem>
     );
   });
+
   return (
     <Menu
       animate={{
@@ -52,7 +52,7 @@ const DropDownMenu = props => {
           <Logo height={50} width={50} />
         </Button>
       </MenuHandler>
-      <MenuList className=" bg-white rounded-xl md:hidden border-0 -mt-1 rounded-t-none w-full drop-shadow-xl relative z-40">
+      <MenuList className=" bg-white rounded-xl md:hidden border-0 mt-1 rounded-t-none w-full drop-shadow-xl relative z-40">
         {menu}
       </MenuList>
     </Menu>

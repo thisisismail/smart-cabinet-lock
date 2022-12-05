@@ -1,54 +1,59 @@
 import React from 'react';
-import { Button, Card, CardBody, Typography } from '@material-tailwind/react';
+import {
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+  Button,
+  Typography
+} from '@material-tailwind/react';
 import { MdLogout, MdAccountCircle } from 'react-icons/md';
 import { signOut } from '../api/firebase/services/utilsFirebase';
 
 const UserInfo = props => {
-  const [popup, setPopup] = React.useState(false);
-
-  const linkStyle = 'font-sans font-semibold';
-
-  const userInfo = (
-    <Card
-      style={{ minWidth: 300 }}
-      className="fixed right-0 top-14 w-full md:w-min -mt-2 pt-2 rounded-t-none md:mt-0 md:pt-0 md:rounded-t-xl md:right-2"
-    >
-      <CardBody className="flex flex-col gap-2">
-        <Typography
-          variant="h6"
-          color="blue"
-          textGradient
-          className="flex flex-row items-center gap-2"
-        >
-          <MdAccountCircle size="30" color="black" />
-          {props.displayName ?? ''}
-        </Typography>
-        <Button
-          className="flex flex-row justify-center items-center gap-2"
-          color="red"
-          onClick={signOut}
-        >
-          <MdLogout size={24} className="" />
-          Keluar
-        </Button>
-      </CardBody>
-    </Card>
-  );
-
-  const clickHandler = () => {
-    setPopup(!popup);
-  };
+  const linkStyle = 'font-sans font-semibold text-white';
 
   return (
     <>
-      {popup && userInfo}
-      <div
-        className={`${linkStyle} text-white cursor-pointer truncate border-0 w-full text-right `}
-        style={{ width: 200 }}
-        onClick={clickHandler}
+      <Menu
+        placement='bottom-end'
+        animate={{
+          mount: { y: 0 },
+          unmount: { y: -50 }
+        }}
       >
-        {props.displayName}
-      </div>
+        <MenuHandler>
+          <div
+            style={{ minWidth: 200, maxWidth: 300 }}
+            className={`${linkStyle} w-min border-0 h-full flex items-center justify-end cursor-pointer`}
+          >
+            {props.displayName}
+          </div>
+        </MenuHandler>
+        <MenuList className=" bg-white rounded-xl border-0 -mt-2 rounded-t-none md:rounded-t-xl md:mt-2 drop-shadow-xl relative z-40 w-full md:w-max">
+          <MenuItem className="hover:bg-white hover:cursor-default">
+            <div className="flex flex-col gap-2">
+              <Typography
+                variant="h6"
+                color="blue"
+                textGradient
+                className="flex flex-row items-center gap-2"
+              >
+                <MdAccountCircle size="30" color="black" />
+                {props.displayName ?? ''}
+              </Typography>
+              <Button
+                className="flex flex-row justify-center items-center gap-2"
+                color="red"
+                onClick={signOut}
+              >
+                <MdLogout size={24} className="" />
+                Keluar
+              </Button>
+            </div>
+          </MenuItem>
+        </MenuList>
+      </Menu>
     </>
   );
 };
