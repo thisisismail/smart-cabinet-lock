@@ -14,7 +14,7 @@ export default function Home() {
       alt="banner"
       className="object-contain w-full h-full rounded-xl border-2"
       onLoad={() => {
-        console.log('image loaded');
+        console.log('gambar berhasil dimuat');
       }}
     ></Image>
   );

@@ -24,12 +24,13 @@ const AccordionLandingPage = () => {
             className="animation-75 text-left text-base md:text-xl"
             onClick={() => {
               handleOpen(index);
-              console.log(index);
             }}
           >
             {data.header}
           </AccordionHeader>
-          <AccordionBody className='animation-75 text-left text-base md:text-lg'>{data.body}</AccordionBody>
+          <AccordionBody className="animation-75 text-left text-base md:text-lg">
+            {data.body}
+          </AccordionBody>
         </Accordion>
       </div>
     );
