@@ -4,6 +4,7 @@ import Image from 'next/image';
 import bannerImg from '../public/Contactless Transction/main-banner-landingpage.png';
 import ElockFeatures from '../components/AccordionLandingPage';
 import TypeBanner from '../components/TypeAnimationElock';
+import Logo from '../components/Logo';
 // import Loading from '../components/Loading';
 
 export default function Home() {
@@ -13,14 +14,14 @@ export default function Home() {
       rel="svg"
       src={bannerImg}
       alt="banner"
-      className="object-contain w-full h-full rounded-xl border-2"
+      className="object-contain w-full h-full rounded-xl border-0"
       onLoad={() => {
         console.log('gambar berhasil dimuat');
       }}
     ></Image>
   );
 
-  const textAnimationStyle = 'border-0 font-mono font-bold text-center';
+  const textAnimationStyle = 'border-0 font-mono';
 
   return (
     <>
@@ -32,8 +33,18 @@ export default function Home() {
           {ImageAsset}
         </div>
       </div>
-      <div className="mb-6 -mt-2 md:mb-12 md:mt-5">
-        <TypeBanner style={`${textAnimationStyle} text-2xl md:text-5xl`} />
+      <div
+        style={{ maxWidth: 1100 }}
+        className="-mt-2 md:mt-5 mb-8 mx-auto px-2 flex flex-row w-full border-0 justify-center md:justify-start items-center"
+      >
+        <div className="flex flex-col border-0 gap-0 md:gap-2">
+          <TypeBanner
+            style={`${textAnimationStyle} text-2xl md:text-5xl font-bold text-center md:text-left`}
+          />
+          <div className={`${textAnimationStyle} md:text-2xl`}>
+            Ketika keamanan bertemu dengan kemudahan
+          </div>
+        </div>
       </div>
       <div style={{ maxWidth: 1100 }} className="mt-2 mx-auto px-2">
         <ElockFeatures />
