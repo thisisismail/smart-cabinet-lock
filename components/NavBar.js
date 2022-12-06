@@ -55,7 +55,7 @@ const NavBar = () => {
           <DropDownMenu navLinks={navLinks} userInfo={displayName} />
         </div>
         {menu}
-        <div className="hidden md:block">
+        <div className={`hidden ${!uid && 'absolute'} md:block`}>
           {uid && <UserInfo displayName={displayName} />}
         </div>
       </header>

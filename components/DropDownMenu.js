@@ -74,7 +74,13 @@ const DropDownMenu = props => {
       </MenuHandler>
       <MenuList className=" bg-white rounded-xl md:hidden border-0 -mt-2 rounded-t-none w-full drop-shadow-xl relative z-40">
         {menu}
-        <Menu placement="bottom-end" offset={15}>
+        <Menu
+          placement="bottom-end"
+          animate={{
+            mount: { y: 0 },
+            unmount: { y: -10 }
+          }}
+        >
           <MenuHandler className={`${!uid && 'hidden'} mb-2`}>
             <MenuItem className={`flex flex-row items-start`}>
               <div className={`${linkStyle} text-blue-900`}>{displayName}</div>
@@ -85,7 +91,7 @@ const DropDownMenu = props => {
               />
             </MenuItem>
           </MenuHandler>
-          <MenuList className="md:hidden bg-white rounded-xl border-0 -mt-2 rounded-t-none  drop-shadow-xl relative z-40 w-full">
+          <MenuList className="md:hidden bg-white rounded-xl border-0 rounded-t-none  drop-shadow-xl relative z-40 w-full">
             <MenuItem className="md:hidden">
               <Button
                 className="flex w-full flex-row justify-center items-center gap-2"
