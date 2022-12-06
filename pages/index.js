@@ -4,7 +4,7 @@ import Image from 'next/image';
 import bannerImg from '../public/Contactless Transction/main-banner-landingpage.png';
 import ElockFeatures from '../components/AccordionLandingPage';
 import TypeBanner from '../components/TypeAnimationElock';
-import Logo from '../components/Logo';
+// import Logo from '../components/Logo';
 // import Loading from '../components/Loading';
 
 export default function Home() {
