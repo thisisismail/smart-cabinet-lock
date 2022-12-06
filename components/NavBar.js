@@ -19,6 +19,10 @@ const NavBar = () => {
   const linkStyle = 'font-sans font-semibold outline-0';
 
   const menu = navLinks.map((item, index) => {
+    if (item.name === 'Home') {
+      return null;
+    }
+
     if (item.name === 'Masuk' && uid) {
       return null;
     }
@@ -40,11 +44,20 @@ const NavBar = () => {
   return (
     <>
       <header className="sticky z-50 top-0 h-16 border-0 flex justify-between items-center bg-blue-900 px-4 md:text-lg">
+        <div>
+          <Link href="/">
+            <a>
+              <Logo height={50} width={50} />
+            </a>
+          </Link>
+        </div>
         <div className="border-0 md:hidden">
-          <DropDownMenu navLinks={navLinks} />
+          <DropDownMenu navLinks={navLinks} userInfo={displayName} />
         </div>
         {menu}
-        {uid && <UserInfo displayName={displayName} />}
+        <div className="hidden md:block">
+          {uid && <UserInfo displayName={displayName} />}
+        </div>
       </header>
     </>
   );
