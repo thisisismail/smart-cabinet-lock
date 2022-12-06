@@ -64,14 +64,14 @@ const DropDownMenu = props => {
       }}
     >
       <MenuHandler>
-        <Button variant="text" className="border-0 h-12 p-0">
+        <Button variant="text" className="border-0 h-14 p-0">
           <MdMenu
             size={40}
             className={`${uid ? 'text-yellow-600' : 'text-white'} ${blink}`}
           />
         </Button>
       </MenuHandler>
-      <MenuList className=" bg-white rounded-xl md:hidden border-0 mt-1 rounded-t-none w-full drop-shadow-xl relative z-40">
+      <MenuList className=" bg-white rounded-xl md:hidden border-0 -mt-2 rounded-t-none w-full drop-shadow-xl relative z-40">
         {menu}
         <Menu placement="bottom-end" offset={15}>
           <MenuHandler className={`${!uid && 'hidden'} mb-2`}>
