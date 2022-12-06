@@ -9,7 +9,12 @@ const Loading = () => {
         <div className="flex items-center justify-center border-0 border-red w-full h-full">
           {/* Get styling data from css file */}
           {/* <div id={styles.current}> */}
-          <Logo width={200} height={200} animation={'animate-bounce'} />
+          <Logo
+            width={200}
+            height={200}
+            animation={'animate-bounce'}
+            color="white"
+          />
           {/* </div> */}
         </div>
       </div>

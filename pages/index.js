@@ -21,8 +21,6 @@ export default function Home() {
     ></Image>
   );
 
-  const textAnimationStyle = 'border-0 font-mono';
-
   return (
     <>
       <div className="w-full left-0 border-0 bg-blue-900 rounded-b-xl pb-8 -mt-8 pt-8 mb-8">
@@ -39,11 +37,9 @@ export default function Home() {
       >
         <div className="flex flex-col border-0 gap-0 md:gap-2">
           <TypeBanner
-            style={`${textAnimationStyle} text-2xl md:text-5xl font-bold text-center md:text-left`}
+            styleFooter={`md:text-2xl`}
+            styleHeader={``}
           />
-          <div className={`${textAnimationStyle} md:text-2xl`}>
-            Ketika keamanan bertemu dengan kemudahan
-          </div>
         </div>
       </div>
       <div style={{ maxWidth: 1100 }} className="mt-2 mx-auto px-2">

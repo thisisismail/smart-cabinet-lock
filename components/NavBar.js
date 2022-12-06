@@ -47,7 +47,7 @@ const NavBar = () => {
         <div>
           <Link href="/">
             <a>
-              <Logo height={50} width={50} />
+              <Logo height={50} width={50} color="white"/>
             </a>
           </Link>
         </div>

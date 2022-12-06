@@ -5,7 +5,11 @@ const Logo = props => {
     <div
       className={`rounded-md overflow-hidden flex justify-center ${props.bgColor} ${props.animation}`}
     >
-      <ElockLogo height={props.height} width={props.width} color="white" />
+      <ElockLogo
+        height={props.height}
+        width={props.width}
+        color={props.color}
+      />
     </div>
   );
 };

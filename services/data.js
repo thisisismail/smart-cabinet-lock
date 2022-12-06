@@ -135,23 +135,23 @@ const conversion = {
 const features = [
   {
     header: 'Keamanan begitu mudah',
-    body: 'Registrasikan kartu identitas favoritmu melalui halaman Elock lalu pindai kartumu pada mesin Elock untuk membuka kunci kabinetmu dan Kamu siap belajar dalam laboratorium.'
+    body: 'Registrasikan kartu identitas favoritmu melalui halaman EL©K lalu pindai kartumu pada mesin EL©K untuk membuka kunci kabinetmu dan Kamu siap belajar dalam laboratorium.'
   },
   {
     header: 'Mesin minimalis untuk kemanan maksimal',
-    body: 'Mesin Elock hadir dengan bentuk dan ukuran yang minimalis untuk mengamankan kabinetmu. Mesin Elock memiliki desain mekanis dan elektris yang kompak dan kokoh untuk memudahkan pengguna melakukan instlasi.'
+    body: 'Mesin EL©K hadir dengan bentuk dan ukuran yang minimalis untuk mengamankan kabinetmu. Mesin EL©K memiliki desain mekanis dan elektris yang kompak dan kokoh untuk memudahkan pengguna melakukan instlasi.'
   },
   {
     header: 'Pemantauan kapan saja dan dimana saja',
-    body: 'Elock sudah terintegrasi dengan IoT, Kamu bisa dapatkan semua rekaman data pengakses kabinetmu secara realtime di website Elock kapanpun dan dimanapun.'
+    body: 'EL©K sudah terintegrasi dengan IoT, Kamu bisa dapatkan semua rekaman data pengakses kabinetmu secara realtime di website EL©K kapanpun dan dimanapun.'
   },
   {
     header: 'Akses untuk semua perangkat',
-    body: 'Kabar baik, website Elock sudah didesain secara responsif untuk meningkatkan pengalaman pengguna. Kamu dapat mengkases website Elock dengan nyaman melalui web browser pada perangkat smartphone, tablet, komputer, dan apapun perangkat favoritmu.'
+    body: 'Kabar baik, website EL©K sudah didesain secara responsif untuk meningkatkan pengalaman pengguna. Kamu dapat mengkases website EL©K dengan nyaman melalui web browser pada perangkat smartphone, tablet, komputer, dan apapun perangkat favoritmu.'
   },
   {
     header: 'Perbarui data identitas dengan mudah',
-    body: 'Perlu memperbarui indentitas pengakses? bukan masalah. Kamu dapat merubah dan menghapus data pada setiap identitas pengakses dengan mudah melalui website Elock.'
+    body: 'Perlu memperbarui indentitas pengakses? bukan masalah. Kamu dapat merubah dan menghapus data pada setiap identitas pengakses dengan mudah melalui website EL©K.'
   }
 ];
 
