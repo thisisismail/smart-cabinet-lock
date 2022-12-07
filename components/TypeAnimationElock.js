@@ -14,9 +14,9 @@ const TypeAnimationElock = () => {
         </div>
       </div> */}
       <div className="flex border-0">
-        <div className="block md:hidden border-0 -ml-3 -mr-2">
-          <Logo width={90} height={90} color="white" />
-        </div>
+        {/* <div className="block md:hidden border-0 -ml-3 -mr-2">
+          <Logo width={80} height={80} color="white" />
+        </div> */}
         <div className="hidden md:block -ml-5">
           <Logo width={125} height={125} color="white" />
         </div>

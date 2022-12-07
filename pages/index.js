@@ -4,6 +4,7 @@ import Image from 'next/image';
 import bannerImg from '../public/Contactless Transction/main-banner-landingpage.png';
 import ElockFeatures from '../components/AccordionLandingPage';
 import TypeBanner from '../components/TypeAnimationElock';
+import { Typography } from '@material-tailwind/react';
 // import Logo from '../components/Logo';
 // import Loading from '../components/Loading';
 
@@ -26,13 +27,13 @@ export default function Home() {
       <div className="w-full left-0 border-0 bg-blue-900 rounded-b-xl pb-8 -mt-8 pt-8 mb-8">
         <div
           style={{ maxWidth: 800 }}
-          className=" border-0 mx-auto aspect-video px-2"
+          className=" border-0 mx-auto aspect-video px-2 md:mt-0 -mt-0"
         >
           {ImageAsset}
         </div>
         <div
           style={{ maxWidth: 1100 }}
-          className="mt-4 md:mt-5 mb-0 mx-auto px-2 flex flex-row w-full border-0 justify-center md:justify-center items-center"
+          className="mt-4 pl-8 md:mt-5 mb-0 mx-auto px-2 flex flex-row w-full border-0 justify-start md:justify-center items-center"
         >
           <div className="flex flex-col border-0 gap-0 md:gap-2">
             <TypeBanner styleFooter={`md:text-2xl`} styleHeader={``} />

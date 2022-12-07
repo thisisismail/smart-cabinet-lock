@@ -10,7 +10,7 @@ const TableData = props => {
             variant="h5"
             color="blue"
             textGradient
-            className="text-lg md:text-xl"
+            className="text-lg md:text-xl text-blue-900"
           >
             {props.title}
           </Typography>

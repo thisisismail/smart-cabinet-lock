@@ -43,11 +43,11 @@ const NavBar = () => {
 
   return (
     <>
-      <header className="sticky z-50 top-0 h-16 border-0 flex justify-between items-center bg-blue-900 px-4 md:text-lg">
+      <header className="fixed w-full z-50 top-0 h-16 border-0 flex justify-between items-center bg-blue-900 px-4 md:text-lg">
         <div>
           <Link href="/">
             <a>
-              <Logo height={50} width={50} color="white"/>
+              <Logo height={50} width={50} color="white" />
             </a>
           </Link>
         </div>
