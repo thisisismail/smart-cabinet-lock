@@ -3,7 +3,7 @@ import ElockLogo from '../public/ElockLogo';
 const Logo = props => {
   return (
     <div
-      className={`rounded-md overflow-hidden flex justify-center ${props.bgColor} ${props.animation}`}
+      className={` overflow-hidden flex justify-center ${props.bgColor} ${props.animation}`}
     >
       <ElockLogo
         height={props.height}

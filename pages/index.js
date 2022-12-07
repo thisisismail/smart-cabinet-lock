@@ -30,16 +30,13 @@ export default function Home() {
         >
           {ImageAsset}
         </div>
-      </div>
-      <div
-        style={{ maxWidth: 1100 }}
-        className="-mt-2 md:mt-5 mb-8 mx-auto px-2 flex flex-row w-full border-0 justify-center md:justify-start items-center"
-      >
-        <div className="flex flex-col border-0 gap-0 md:gap-2">
-          <TypeBanner
-            styleFooter={`md:text-2xl`}
-            styleHeader={``}
-          />
+        <div
+          style={{ maxWidth: 1100 }}
+          className="mt-4 md:mt-5 mb-0 mx-auto px-2 flex flex-row w-full border-0 justify-center md:justify-center items-center"
+        >
+          <div className="flex flex-col border-0 gap-0 md:gap-2">
+            <TypeBanner styleFooter={`md:text-2xl`} styleHeader={``} />
+          </div>
         </div>
       </div>
       <div style={{ maxWidth: 1100 }} className="mt-2 mx-auto px-2">
