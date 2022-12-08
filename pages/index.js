@@ -29,6 +29,17 @@ export default function Home() {
           className=" border-0 mx-auto aspect-video px-2 md:mt-0 -mt-0"
         >
           {ImageAsset}
+          <div className="text-center border-0 left-0 border-white absolute -mt-4 w-full">
+            <a
+              rel="noopener noreferrer"
+              target="_blank"
+              style={{ fontSize: '10px' }}
+              href="http://www.freepik.com/vectorjuice"
+              className="text-blue-800 text-sm opacity-40"
+            >
+              Image is Designed by vectorjuice / Freepik & Edited by Ismail
+            </a>
+          </div>
         </div>
         <div
           style={{ maxWidth: 1100 }}

@@ -43,7 +43,7 @@ const NavBar = () => {
 
   return (
     <>
-      <header className="fixed w-full z-50 top-0 h-16 border-0 flex justify-between items-center bg-blue-900 px-4 md:text-lg">
+      <header className="fixed w-full z-50 top-0 h-16 border-0 flex justify-between items-center bg-blue-900 px-8 md:text-lg">
         <div>
           <Link href="/">
             <a>
