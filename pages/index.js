@@ -4,6 +4,7 @@ import Image from 'next/image';
 import bannerImg from '../public/Contactless Transction/main-banner-landingpage.png';
 import ElockFeatures from '../components/AccordionLandingPage';
 import TypeBanner from '../components/TypeAnimationElock';
+import AppDesc from '../components/AppDesc';
 // import Logo from '../components/Logo';
 // import Loading from '../components/Loading';
 
@@ -15,15 +16,12 @@ export default function Home() {
       src={bannerImg}
       alt="banner"
       className="object-contain w-full h-full rounded-xl border-0"
-      onLoad={() => {
-        console.log('gambar berhasil dimuat');
-      }}
     ></Image>
   );
 
   return (
     <>
-      <div className="w-full left-0 border-0 bg-blue-900 rounded-b-xl pb-8 -mt-8 pt-8 mb-8">
+      <div className="w-full left-0 border-0 bg-blue-900 rounded-b-xl pb-8 -mt-8 pt-8 mb-4">
         <div
           style={{ maxWidth: 800 }}
           className=" border-0 mx-auto aspect-video px-2 md:mt-0 -mt-0"
@@ -50,8 +48,16 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div style={{ maxWidth: 1100 }} className="mt-2 mx-auto px-2">
-        <ElockFeatures />
+      <div
+        style={{ maxWidth: 1100 }}
+        className="mt-2 mx-auto px-2 flex flex-col lg:flex-col gap-4"
+      >
+        <div className="">
+          <AppDesc />
+        </div>
+        <div className="w-ful border-0">
+          <ElockFeatures />
+        </div>
       </div>
     </>
   );

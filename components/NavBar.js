@@ -27,7 +27,7 @@ const NavBar = () => {
       return null;
     }
     return (
-      <div key={index} className="hidden md:block outline-0">
+      <div key={index} className={`hidden md:block outline-0`}>
         <Link href={item.path}>
           <a
             className={`${linkStyle} ${
@@ -44,14 +44,14 @@ const NavBar = () => {
   return (
     <>
       <header className="fixed w-full z-50 top-0 h-16 border-0 flex justify-between items-center bg-blue-900 px-8 md:text-lg">
-        <div>
+        <div className="border-0 -ml-6 md:-ml-2">
           <Link href="/">
             <a>
               <Logo height={50} width={50} color="white" />
             </a>
           </Link>
         </div>
-        <div className="border-0 md:hidden">
+        <div className="border-0 md:hidden md:mr-0 -mr-5">
           <DropDownMenu navLinks={navLinks} userInfo={displayName} />
         </div>
         {menu}

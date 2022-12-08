@@ -29,7 +29,7 @@ const UserInfo = props => {
           {props.displayName}
         </div>
       </MenuHandler>
-      <MenuList className=" bg-white rounded-xl border-0 -mt-2 rounded-t-none md:rounded-t-xl md:mt-4 drop-shadow-xl relative z-40 w-full md:w-max">
+      <MenuList className="hidden md:block bg-white rounded-xl border-0 rounded-t-none md:rounded-t-xl mt-0 drop-shadow-xl relative z-40 w-max">
         <MenuItem className="hover:bg-white hover:cursor-default">
           <div className="flex flex-col gap-2">
             <Typography

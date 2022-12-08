@@ -27,9 +27,11 @@ const AccordionLandingPage = () => {
               handleOpen(index);
             }}
           >
-            {data.header}
+            {/* <div className="w-min"> */}
+            <div className="w-max">{data.header}</div>
+            {/* </div> */}
           </AccordionHeader>
-          <AccordionBody className="animation-75 text-left text-sm md:text-lg">
+          <AccordionBody className="animation-75 text-left text-sm md:text-lg border-0">
             {data.body}
           </AccordionBody>
         </Accordion>
@@ -39,11 +41,11 @@ const AccordionLandingPage = () => {
 
   return (
     <>
-      <Card>
+      <Card className="h-full">
         <CardBody className="mb-4">
           <Typography
             variant="h5"
-            className="text-blue-900 border-b border-gray-400 pb-2 text-lg md:text-xl"
+            className="text-blue-900 border-b border-gray-400 pb-2 -mb-1 text-lg md:text-xl"
           >
             Fitur Kami
           </Typography>
