@@ -27,7 +27,12 @@ const NavBar = () => {
       return null;
     }
     return (
-      <div key={index} className={`hidden md:block outline-0`}>
+      <div
+        key={index}
+        className={`hidden md:block outline-0 ${
+          item.name === 'Masuk' ? 'absolute right-8' : ''
+        }`}
+      >
         <Link href={item.path}>
           <a
             className={`${linkStyle} ${
@@ -44,7 +49,7 @@ const NavBar = () => {
   return (
     <>
       <header className="fixed w-full z-50 top-0 h-16 border-0 flex justify-between items-center bg-blue-900 px-8 md:text-lg">
-        <div className="border-0 -ml-6 md:-ml-2">
+        <div className="border-0 -ml-6 md:-ml-2 relative z-50">
           <Link href="/">
             <a>
               <Logo height={50} width={50} color="white" />
@@ -54,8 +59,8 @@ const NavBar = () => {
         <div className="border-0 md:hidden md:mr-0 -mr-5">
           <DropDownMenu navLinks={navLinks} userInfo={displayName} />
         </div>
-        {menu}
-        <div className={`hidden ${!uid && 'absolute'} md:block`}>
+        <div className="flex flex-row border-0 w-full items-center justify-center gap-8 absolute left-0">{menu}</div>
+        <div className={`hidden ${!uid && 'absolute'} md:block relative z-50`}>
           {uid && <UserInfo displayName={displayName} />}
         </div>
       </header>

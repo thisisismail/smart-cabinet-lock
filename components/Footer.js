@@ -1,7 +1,8 @@
 import React from 'react';
-import Logo from './Logo';
+import Link from 'next/link';
 import { RiInformationFill } from 'react-icons/ri';
 import { MdLocationOn } from 'react-icons/md';
+import Logo from './Logo';
 // import Map from './Map';
 
 const Footer = () => {
@@ -12,26 +13,37 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row gap-8 text-sm md:text-base">
           <div className="flex gap-8 justify-start md:justify-center h-full border-0 flex-row">
             <div className="flex flex-col border-0 border-blue-500 gap-2 text-blue-500 justify-between w-full">
-              <div className="text-gray-600 font-semibold flex items-center border-0 gap-2 border-b-2 border-gray-900 md:border-0">
+              <div className="text-gray-600 font-semibold flex items-center border-0 gap-2 border-b-0 border-gray-900 md:border-0">
                 Tentang
                 <span className="">
                   <RiInformationFill />
                 </span>
               </div>
-              <div className="">Tim Kami</div>
-              <div className="">Deskripsi produk</div>
-              <div className="">Kontak</div>
-              <div className="">Laporkan bug</div>
+              <Link href="/AboutUs" className="">
+                <a>Tim Kami</a>
+              </Link>
+              <Link href="/AboutUs" className="">
+                <a>Deskripsi produk</a>
+              </Link>
+              <Link href="/AboutUs" className="">
+                <a>Kontak</a>
+              </Link>
+              <Link href="/AboutUs" className="">
+                <a>Laporkan bug</a>
+              </Link>
             </div>
           </div>
           <div className="flex flex-col border-0 self-stretch border-blue-500 text-blue-500 gap-2">
-            <div className="text-gray-600 font-semibold flex items-center gap-2 border-b-2 border-gray-900 md:border-0">
+            <div className="text-gray-600 font-semibold flex items-center gap-2 border-b-0 border-gray-900 md:border-0">
               Lokasi
               <span className="">
                 <MdLocationOn />
               </span>
             </div>
-            <div style={{ minWidth: 300 }} className="flex flex-col gap-2 border-0 md:w-min">
+            <div
+              style={{ minWidth: 300 }}
+              className="flex flex-col gap-2 border-0 md:w-min"
+            >
               <div className="text-justify text-white border-0">
                 Departemen Teknik Elektro, Fakultas Teknik, Universitas
                 Indonesia, Jl. Prof. DR. Ir R Roosseno, Kukusan, Beji, Kota
@@ -53,7 +65,7 @@ const Footer = () => {
         </div>
         <div className="flex flex-row gap-8">
           <div className="flex flex-col border-white gap-2 items-center w-min border-0">
-            <div className="text-gray-600 text-left border-0 w-full font-semibold text-sm md:text-base border-b-2 md:border-0 border-gray-900">
+            <div className="text-gray-600 text-left border-0 w-full font-semibold text-sm md:text-base border-b-0 md:border-0 border-gray-900">
               Dikembangkan oleh
             </div>
             <div

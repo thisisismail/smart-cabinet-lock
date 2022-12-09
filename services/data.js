@@ -12,8 +12,12 @@ const navLinks = [
     path: '/accounts'
   },
   {
-    name: 'Daftar',
+    name: 'Tambah Pengguna',
     path: '/Registration'
+  },
+  {
+    name: 'Tentang Kami',
+    path: '/AboutUs'
   },
   // {
   //   name: 'Test',
@@ -155,4 +159,40 @@ const features = [
   }
 ];
 
-export { navLinks, formInputs, loginInputs, conversion, features };
+const Developers = [
+  {
+    name: 'Muhammad Dzaki M.',
+    position: 'CAD Engineer',
+    linkedin: 'https://www.linkedin.com/in/dzakimubarak',
+    email: 'dzaki.college@gmail.com',
+    img: '/Developer/Dzaki.jpg',
+    style: ''
+  },
+  {
+    name: 'Muhammad Fairuz M.',
+    position: 'Electronics Engineer',
+    linkedin: 'https://www.linkedin.com/in/mfairuzm/',
+    email: 'm.fairuzmumtaz@gmail.com',
+    img: '/Developer/Fairuz.jpg',
+    style: ''
+  },
+  {
+    name: 'Muhammad Nur Ismail',
+    position: 'Website Engineer',
+    linkedin: 'https://www.linkedin.com/in/muhammad-nur-ismail-555025204',
+    email: 'simail.official@gmail.com',
+    img: '/Developer/Ismail.jpg',
+    style: ''
+  },
+  {
+    name: 'R. W. Andhika',
+    position: 'Embedded System Engineer',
+    linkedin:
+      'https://www.linkedin.com/in/raden-wisnu-andhika-pranidhia-b17a16196',
+    email: 'radenwisnu21@gmail.com',
+    img: '/Developer/Bobi.jpg',
+    style: ''
+  }
+];
+
+export { navLinks, formInputs, loginInputs, conversion, features, Developers };

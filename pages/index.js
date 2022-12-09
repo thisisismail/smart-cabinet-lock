@@ -1,7 +1,7 @@
 // import LoginCard from '../components/LoginCard';
 import React from 'react';
 import Image from 'next/image';
-import bannerImg from '../public/Contactless Transction/main-banner-landingpage.png';
+import bannerImg from '../public/Banner/main-banner-landingpage.png';
 import ElockFeatures from '../components/AccordionLandingPage';
 import TypeBanner from '../components/TypeAnimationElock';
 import AppDesc from '../components/AppDesc';
