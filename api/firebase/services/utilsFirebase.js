@@ -141,6 +141,7 @@ const authStateChanged = async setUser => {
         accessToken: user.accessToken
       });
       // console.log(user);
+      console.log('sendUserVerification');
       return user;
       // ...
     } else {
@@ -164,18 +165,22 @@ const signInWithEmail = async (email, password) => {
     });
 };
 
-const signUpWithEmail = async (email, password) => {
+const signUpWithEmail = async (email, password, name) => {
   // console.log(email, password);
   return await createUserWithEmailAndPassword(auth, email, password)
     .then(userRecord => {
       // See the UserRecord reference doc for the contents of userRecord.
       console.log(
         'Successfully created new authenticated user:',
-        userRecord.uid
+        userRecord.user.uid
       );
+      console.log(userRecord);
+      return userRecord.user;
     })
+    .then(() => updateUser(name))
+    .then(() => signOut())
     .catch(error => {
-      console.log('Error creating new authenticated user:', error.message);
+      return error.code;
     });
 };
 
@@ -197,9 +202,9 @@ const signOut = async () => {
   });
 };
 
-const updateUser = userObj => {
+const updateUser = name => {
   updateProfile(auth.currentUser, {
-    displayName: userObj.name
+    displayName: name
   }).then(() => console.log('Display name updated'));
 };
 

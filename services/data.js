@@ -34,6 +34,12 @@ const loginInputs = [
   { label: 'Password', name: 'password', type: null }
 ];
 
+const signUpInputs = [
+  { label: 'Email', name: 'email', type: 'email' },
+  { label: 'Nama', name: 'name', type: 'text' },
+  { label: 'Password', name: 'password', type: null }
+];
+
 const formInputs = [
   {
     label: 'Nama Lengkap',
@@ -195,4 +201,12 @@ const Developers = [
   }
 ];
 
-export { navLinks, formInputs, loginInputs, conversion, features, Developers };
+export {
+  navLinks,
+  formInputs,
+  loginInputs,
+  signUpInputs,
+  conversion,
+  features,
+  Developers
+};

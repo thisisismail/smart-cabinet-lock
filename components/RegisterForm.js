@@ -87,7 +87,7 @@ const RegisterForm = props => {
     <>
       <Card className="">
         <CardBody className="flex flex-col gap-2">
-          <Typography variant="h5" color="blue" textGradient>
+          <Typography variant="h5" className="text-blue-900" textGradient>
             Pendaftaran
           </Typography>
           <div className="flex flex-col gap-2">

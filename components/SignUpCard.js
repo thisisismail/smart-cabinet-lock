@@ -9,9 +9,9 @@ import {
   Input,
   Button
 } from '@material-tailwind/react';
-import { signInWithEmail } from '../api/firebase/services/utilsFirebase';
+import { signUpWithEmail } from '../api/firebase/services/utilsFirebase';
 // import Center from '../components/layouts/Centering';
-import { loginInputs } from '../services/data';
+import { signUpInputs } from '../services/data';
 import { checkEmail, getErrorMessage } from '../services/utils';
 // import { useUser } from '../context/user';
 
@@ -20,7 +20,8 @@ const LoginCard = () => {
 
   const [user, setUser] = React.useState({
     email: '',
-    password: ''
+    password: '',
+    name: ''
   });
 
   const [error, setError] = React.useState({
@@ -47,7 +48,7 @@ const LoginCard = () => {
   };
 
   const submitHandler = () => {
-    signInWithEmail(user.email, user.password).then(res => {
+    signUpWithEmail(user.email, user.password, user.name).then(res => {
       if (res) {
         setError({ ...error, auth: getErrorMessage(res) });
       } else {
@@ -68,7 +69,7 @@ const LoginCard = () => {
     className: 'absolute'
   };
 
-  const InputsForm = loginInputs.map(input => (
+  const InputsForm = signUpInputs.map(input => (
     <div key={input.name}>
       <Input
         value={user[input.name]}
@@ -96,7 +97,7 @@ const LoginCard = () => {
       <Card style={{ maxWidth: 400 }} className="mx-auto">
         <CardBody className="flex flex-col gap-2">
           <Typography variant="h5" color="blue" textGradient>
-            Masuk
+            Daftar
           </Typography>
           {InputsForm}
           {/* <Input label="Or sign up with admin card" disabled></Input> */}
@@ -108,17 +109,16 @@ const LoginCard = () => {
               error.email
             }
           >
-            Masuk
+            Daftar
           </Button>
           <div>
-            Belum punya akun? Silahkan{' '}
+            Sudah punya akun? Silahkan{' '}
             <span>
-              <Link href="/SignUp">
-                <a className="text-blue-700 hover:text-blue-500">daftar</a>
+              <Link href="/SignIn">
+                <a className="text-blue-700 hover:text-blue-500">masuk</a>
               </Link>
             </span>
           </div>
-          {/* <Button onClick={storePw}>Store PW</Button> */}
         </CardBody>
       </Card>
     </>
