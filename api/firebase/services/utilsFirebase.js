@@ -140,8 +140,6 @@ const authStateChanged = async setUser => {
         displayName: user.displayName,
         accessToken: user.accessToken
       });
-      // console.log(user);
-      console.log('sendUserVerification');
       return user;
       // ...
     } else {
@@ -170,11 +168,7 @@ const signUpWithEmail = async (email, password, name) => {
   return await createUserWithEmailAndPassword(auth, email, password)
     .then(userRecord => {
       // See the UserRecord reference doc for the contents of userRecord.
-      console.log(
-        'Successfully created new authenticated user:',
-        userRecord.user.uid
-      );
-      // console.log(userRecord);
+      console.log('Successfully created new authenticated user');
       return userRecord.user;
     })
     .then(() => updateUser(name))
@@ -227,7 +221,7 @@ const signOut = async () => {
 const updateUser = name => {
   updateProfile(auth.currentUser, {
     displayName: name
-  }).then(() => console.log('Display name updated'));
+  });
 };
 
 // =================== Check User Existance ============================
