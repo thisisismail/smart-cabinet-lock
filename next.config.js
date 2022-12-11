@@ -12,7 +12,9 @@ const nextConfig = {
     messagingSenderId: process.env.MESSAGINGSENDERID,
     appId: process.env.APPID,
     measurementId: process.env.MEASUREMENTID,
-    databaseURL: process.env.DATABASEURL
+    databaseURL: process.env.DATABASEURL,
+    adminEmail: process.env.ADMINEMAIL,
+    adminPassword: process.env.ADMINPASSWORD
   }
   // async redirects() {
   //   return [

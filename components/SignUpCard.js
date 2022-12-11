@@ -1,4 +1,5 @@
 import React from 'react';
+import useSWR from 'swr';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { BiHide, BiShow } from 'react-icons/bi';
@@ -12,23 +13,33 @@ import {
 } from '@material-tailwind/react';
 import {
   signUpWithEmail,
-  // setRegisterAdminStatus,
-  setRegisterAdminMode,
-  getRegisterAdminStatus
+  setRegisterAdminStatus,
+  setRegisterAdminMode
 } from '../api/firebase/services/utilsFirebase';
 // import Center from '../components/layouts/Centering';
 import { signUpInputs } from '../services/data';
 import { checkEmail, getErrorMessage } from '../services/utils';
 // import { useUser } from '../context/user';
 
-const LoginCard = () => {
+const endpoint = `${process.env.databaseURL}/utilsRegisterAdmin/status.json`;
+
+const fetcher = async url => {
+  return await fetch(url)
+    .then(res => {
+      return res.json();
+    })
+    .catch(error => console.log(error));
+};
+
+const SignUpCard = () => {
   const router = useRouter();
+
+  const { data } = useSWR(endpoint, fetcher);
 
   const [user, setUser] = React.useState({
     email: '',
     password: '',
-    name: '',
-    mastercar: ''
+    name: ''
   });
 
   const [error, setError] = React.useState({
@@ -40,14 +51,9 @@ const LoginCard = () => {
 
   const [click, setClick] = React.useState(false);
 
-  const [masterCardStatus, setMasterCardStatus] = React.useState('');
-
   const [masterCardMode, setMasterCardMode] = React.useState(false);
 
   React.useEffect(() => {
-    getRegisterAdminStatus().then(res =>
-      res === 1 ? setMasterCardStatus('Terverifikasi') : setMasterCardStatus('')
-    );
     masterCardMode === false && setRegisterAdminMode(0);
     masterCardMode === true && setRegisterAdminMode(1);
   });
@@ -67,13 +73,18 @@ const LoginCard = () => {
   };
 
   const submitHandler = () => {
-    signUpWithEmail(user.email, user.password, user.name).then(res => {
-      if (res) {
-        setError({ ...error, auth: getErrorMessage(res) });
-      } else {
-        router.push('/');
-      }
-    });
+    signUpWithEmail(user.email, user.password, user.name)
+      .then(res => {
+        if (res) {
+          setError({ ...error, auth: getErrorMessage(res) });
+        } else {
+          router.push('/');
+        }
+      })
+      .then(() => {
+        setRegisterAdminMode(0);
+        setRegisterAdminStatus(0);
+      });
     setClick(!click);
   };
 
@@ -103,7 +114,11 @@ const LoginCard = () => {
       <Input
         disabled={input.name === 'mastercard' ? true : false}
         value={
-          input.name !== 'mastercard' ? user[input.name] : masterCardStatus
+          input.name !== 'mastercard'
+            ? user[input.name]
+            : data === 0
+            ? 'Menunggu verifikasi'
+            : 'Terverifikasi'
         }
         label={input.label}
         name={input.name}
@@ -145,7 +160,8 @@ const LoginCard = () => {
             onClick={submitHandler}
             disabled={
               Object.values(user).some(x => x === null || x === '') ||
-              error.email
+              error.email ||
+              data === 0
             }
           >
             Daftar
@@ -164,4 +180,4 @@ const LoginCard = () => {
   );
 };
 
-export default LoginCard;
+export default SignUpCard;

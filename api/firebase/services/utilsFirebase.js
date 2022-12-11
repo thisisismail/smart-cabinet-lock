@@ -174,7 +174,7 @@ const signUpWithEmail = async (email, password, name) => {
         'Successfully created new authenticated user:',
         userRecord.user.uid
       );
-      console.log(userRecord);
+      // console.log(userRecord);
       return userRecord.user;
     })
     .then(() => updateUser(name))
@@ -188,19 +188,21 @@ const setRegisterAdminMode = val => {
   set(ref(dataDb, 'utilsRegisterAdmin/mode'), val);
 };
 
-const getRegisterAdminMode = async () => {
-  return await get(child(dbRef, 'utilsRegisterAdmin/mode')).then(res => {
-    return res;
+const getRegisterAdminMode = () => {
+  return get(child(dbRef, 'utilsRegisterAdmin/mode')).then(snapshot => {
+    return snapshot.val();
   });
 };
 
 const setRegisterAdminStatus = val => {
-  set(ref(dataDb, 'utilsRegisterAdmin/status'), val);
+  signInWithEmail(process.env.adminEmail, process.env.adminPassword)
+    .then(() => set(ref(dataDb, 'utilsRegisterAdmin/status'), val))
+    .then(() => signOut());
 };
 
-const getRegisterAdminStatus = async () => {
-  return await get(child(dbRef, 'utilsRegisterAdmin/status')).then(res => {
-    return res;
+const getRegisterAdminStatus = () => {
+  return get(child(dbRef, 'utilsRegisterAdmin/status')).then(snapshot => {
+    return snapshot.val();
   });
 };
 
