@@ -156,7 +156,7 @@ const signInWithEmail = async (email, password) => {
   // console.log(email, password);
   return await signInWithEmailAndPassword(auth, email, password)
     .then(() => {
-      console.log('Try to sign in with email and password');
+      console.log('Signed in');
     })
     .catch(error => {
       return error.code;
