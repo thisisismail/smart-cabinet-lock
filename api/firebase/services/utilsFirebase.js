@@ -152,7 +152,7 @@ const authStateChanged = async setUser => {
   });
 };
 
-// =================== Sign In & Sign Out Actions ============================
+// =================== Sign In & Sign Out Actions Admin ============================
 
 const signInWithEmail = async (email, password) => {
   // console.log(email, password);
@@ -182,6 +182,26 @@ const signUpWithEmail = async (email, password, name) => {
     .catch(error => {
       return error.code;
     });
+};
+
+const setRegisterAdminMode = val => {
+  set(ref(dataDb, 'utilsRegisterAdmin/mode'), val);
+};
+
+const getRegisterAdminMode = async () => {
+  return await get(child(dbRef, 'utilsRegisterAdmin/mode')).then(res => {
+    return res;
+  });
+};
+
+const setRegisterAdminStatus = val => {
+  set(ref(dataDb, 'utilsRegisterAdmin/status'), val);
+};
+
+const getRegisterAdminStatus = async () => {
+  return await get(child(dbRef, 'utilsRegisterAdmin/status')).then(res => {
+    return res;
+  });
 };
 
 const addNewUser = newUser => {
@@ -238,7 +258,11 @@ export {
   updateUser,
   signOut,
   isEmailExist,
-  deleteAccount
+  deleteAccount,
+  setRegisterAdminStatus,
+  setRegisterAdminMode,
+  getRegisterAdminStatus,
+  getRegisterAdminMode
   // getPassword
 };
 

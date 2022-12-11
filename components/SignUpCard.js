@@ -7,9 +7,15 @@ import {
   CardBody,
   Typography,
   Input,
-  Button
+  Button,
+  Switch
 } from '@material-tailwind/react';
-import { signUpWithEmail } from '../api/firebase/services/utilsFirebase';
+import {
+  signUpWithEmail,
+  // setRegisterAdminStatus,
+  setRegisterAdminMode,
+  getRegisterAdminStatus
+} from '../api/firebase/services/utilsFirebase';
 // import Center from '../components/layouts/Centering';
 import { signUpInputs } from '../services/data';
 import { checkEmail, getErrorMessage } from '../services/utils';
@@ -21,7 +27,8 @@ const LoginCard = () => {
   const [user, setUser] = React.useState({
     email: '',
     password: '',
-    name: ''
+    name: '',
+    mastercar: ''
   });
 
   const [error, setError] = React.useState({
@@ -32,6 +39,18 @@ const LoginCard = () => {
   const [showpwd, setShowpwd] = React.useState(false);
 
   const [click, setClick] = React.useState(false);
+
+  const [masterCardStatus, setMasterCardStatus] = React.useState('');
+
+  const [masterCardMode, setMasterCardMode] = React.useState(false);
+
+  React.useEffect(() => {
+    getRegisterAdminStatus().then(res =>
+      res === 1 ? setMasterCardStatus('Terverifikasi') : setMasterCardStatus('')
+    );
+    masterCardMode === false && setRegisterAdminMode(0);
+    masterCardMode === true && setRegisterAdminMode(1);
+  });
 
   React.useEffect(() => {
     !checkEmail(user.email)
@@ -71,8 +90,21 @@ const LoginCard = () => {
 
   const InputsForm = signUpInputs.map(input => (
     <div key={input.name}>
+      {input.name === 'mastercard' && (
+        <div className="mb-2">
+          <Switch
+            label="Verifikasi Mastercard"
+            onClick={() => {
+              setMasterCardMode(!masterCardMode);
+            }}
+          />
+        </div>
+      )}
       <Input
-        value={user[input.name]}
+        disabled={input.name === 'mastercard' ? true : false}
+        value={
+          input.name !== 'mastercard' ? user[input.name] : masterCardStatus
+        }
         label={input.label}
         name={input.name}
         onChange={inputHandler}
@@ -101,7 +133,14 @@ const LoginCard = () => {
           </Typography>
           {InputsForm}
           {/* <Input label="Or sign up with admin card" disabled></Input> */}
-          <div className="text-sm text-red-500 pl-3">{error.auth}</div>
+
+          <div
+            className={`text-sm text-red-500 pl-3 ${
+              !error.auth ? 'hidden' : ''
+            }`}
+          >
+            {error.auth}
+          </div>
           <Button
             onClick={submitHandler}
             disabled={

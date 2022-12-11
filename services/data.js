@@ -37,7 +37,8 @@ const loginInputs = [
 const signUpInputs = [
   { label: 'Email', name: 'email', type: 'email' },
   { label: 'Nama', name: 'name', type: 'text' },
-  { label: 'Password', name: 'password', type: null }
+  { label: 'Password', name: 'password', type: null },
+  { label: 'Mastercard', name: 'mastercard', type: 'text' }
 ];
 
 const formInputs = [

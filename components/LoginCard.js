@@ -99,7 +99,7 @@ const LoginCard = () => {
           </Typography>
           {InputsForm}
           {/* <Input label="Or sign up with admin card" disabled></Input> */}
-          <div className="text-sm text-red-500 pl-3">{error.auth}</div>
+          <div className={`text-sm text-red-500 pl-3 ${!error.auth ? 'hidden':'' }`}>{error.auth}</div>
           <Button
             onClick={submitHandler}
             disabled={
