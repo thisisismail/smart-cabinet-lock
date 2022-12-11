@@ -30,17 +30,19 @@ const LogData = () => {
 
   const colTitle = ['Waktu', 'Nama'];
 
-  const logsData = Object.keys(data)?.map(log => {
-    return (
-      <Link key={data[log].time} href={`/accounts/${data[log].uid}`}>
-        <tr className="pt-4 cursor-pointer hover:bg-gray-100">
-          <td className="w-min md:w-max">{timeFormator(data[log].time)}</td>
-          {/* <td>{data[log].time}</td> */}
-          <td className="w-max">{data[log].name}</td>
-        </tr>
-      </Link>
-    );
-  });
+  const logsData = Object.keys(data)
+    ?.map(log => {
+      return (
+        <Link key={data[log].time} href={`/accounts/${data[log].uid}`}>
+          <tr className="pt-4 cursor-pointer hover:bg-gray-100">
+            <td className="w-min md:w-max">{timeFormator(data[log].time)}</td>
+            {/* <td>{data[log].time}</td> */}
+            <td className="w-max">{data[log].name}</td>
+          </tr>
+        </Link>
+      );
+    })
+    .reverse();
 
   return (
     <>

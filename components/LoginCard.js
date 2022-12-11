@@ -13,7 +13,6 @@ import { signInWithEmail } from '../api/firebase/services/utilsFirebase';
 // import Center from '../components/layouts/Centering';
 import { loginInputs } from '../services/data';
 import { checkEmail, getErrorMessage } from '../services/utils';
-// import { useUser } from '../context/user';
 
 const LoginCard = () => {
   const router = useRouter();
