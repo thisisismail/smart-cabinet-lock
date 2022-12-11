@@ -51,4 +51,4 @@ const LogData = () => {
   );
 };
 
-export default withProtected(LogData);
+export default LogData;
