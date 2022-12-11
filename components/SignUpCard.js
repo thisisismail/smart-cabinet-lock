@@ -1,8 +1,8 @@
 import React from 'react';
-import useSWR from 'swr';
+import useSWR, { useSWRConfig } from 'swr';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { BiHide, BiShow } from 'react-icons/bi';
+import { BiHide, BiShow, BiRefresh } from 'react-icons/bi';
 import {
   Card,
   CardBody,
@@ -35,6 +35,8 @@ const SignUpCard = () => {
   const router = useRouter();
 
   const { data } = useSWR(endpoint, fetcher);
+
+  const { mutate } = useSWRConfig();
 
   const [user, setUser] = React.useState({
     email: '',
@@ -126,7 +128,15 @@ const SignUpCard = () => {
         size="lg"
         type={input.type ? input.type : showpwd ? 'text' : 'password'}
         icon={
-          input.type ? null : showpwd ? (
+          input.name === 'mastercard' ? (
+            <BiRefresh
+              {...pwdIconAttr}
+              onClick={() => {
+                mutate(endpoint);
+                console.log('refresh data');
+              }}
+            />
+          ) : input.type ? null : showpwd ? (
             <BiHide {...pwdIconAttr} />
           ) : (
             <BiShow {...pwdIconAttr} />
