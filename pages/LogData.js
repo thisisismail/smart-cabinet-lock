@@ -4,7 +4,6 @@ import Table from '../components/layouts/Table';
 import Loading from '../components/Loading';
 import Centering from '../components/layouts/Centering';
 import { timeFormator } from '../services/utils';
-import withProtected from '../higherOrderComponents/WithProtected';
 
 const endpoint = `${process.env.databaseURL}/logs.json`;
 
