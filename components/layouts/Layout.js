@@ -11,7 +11,11 @@ const Layout = ({ children }) => {
       <div className="h-16"></div>
       <div className="mt-8 w-full border-0 border-black flex-grow">
         <div
-          style={router.pathname === '/' ? {} : { maxWidth: 1100 }}
+          style={
+            router.pathname === '/' || router.pathname === '/AboutUs'
+              ? {}
+              : { maxWidth: 1100 }
+          }
           className={`${
             router.pathname === '/' ? '' : 'px-2'
           } mx-auto  border-0`}

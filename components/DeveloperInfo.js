@@ -6,7 +6,7 @@ import { ImLinkedin, ImMail } from 'react-icons/im';
 const DeveloperInfo = props => {
   return (
     <>
-      <Card style={{ width: 310 }} className="border-0">
+      <Card style={{ width: 310 }} className="border-0 transform transition duration-500 hover:scale-110 hover:drop-shadow-2xl">
         <CardBody className="">
           <div
             style={{ height: 250 }}
