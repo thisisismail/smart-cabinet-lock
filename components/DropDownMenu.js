@@ -40,14 +40,14 @@ const DropDownMenu = props => {
 
     return (
       <MenuItem key={index} href={item.path}>
-        <Link href={item.path} className="w-full">
+        <Link href={item.path} className="block w-ful">
           <a
             href={item.path}
             className={`${linkStyle} ${
               router.pathname === item.path
                 ? 'text-yellow-700'
                 : 'text-blue-900'
-            }`}
+            } block w-full`}
           >
             {item.name}
           </a>

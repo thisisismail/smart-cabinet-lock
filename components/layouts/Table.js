@@ -18,7 +18,12 @@ const TableData = props => {
             <thead className="border-0">
               <tr className="border-0">
                 {props.colTitle.map((col, index) => (
-                  <th key={index}>{col}</th>
+                  <th
+                    key={index}
+                    // className={`${col === 'Waktu' ? '' : ''}`}
+                  >
+                    {col}
+                  </th>
                 ))}
               </tr>
             </thead>
