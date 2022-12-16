@@ -77,7 +77,7 @@ const RegisterForm = props => {
           name={input.name}
           label={input.label}
           options={input.options}
-          onChange={props.selectHandler}
+          selectHandler={props.selectHandler}
         />
       )}
     </div>

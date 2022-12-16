@@ -15,7 +15,7 @@ const SelectInput = props => {
     <Select
       label={props.label}
       size="lg"
-      onChange={props.onChange}
+      onChange={props.selectHandler}
       className="rounded-md"
     >
       {OptionsList}
