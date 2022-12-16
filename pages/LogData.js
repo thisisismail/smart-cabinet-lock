@@ -1,5 +1,6 @@
 import useSWR from 'swr';
 import Link from 'next/link';
+import { useUser } from '../context/user';
 import Table from '../components/layouts/Table';
 import Loading from '../components/Loading';
 import Centering from '../components/layouts/Centering';
@@ -16,6 +17,8 @@ const fetcher = async url => {
 };
 
 const LogData = () => {
+  const user = useUser();
+  const { uid } = user;
   const { data, error } = useSWR(endpoint, fetcher);
 
   if (error)
@@ -32,8 +35,13 @@ const LogData = () => {
   const logsData = Object.keys(data)
     ?.map(log => {
       return (
-        <Link key={data[log].time} href={`/accounts/${data[log].uid}`}>
-          <tr className="pt-4 cursor-pointer hover:bg-gray-100">
+        <Link
+          key={data[log].time}
+          href={uid ? `/accounts/${data[log].uid}` : `#`}
+        >
+          <tr
+            className={`pt-4 ${uid ? 'cursor-pointer' : ''} hover:bg-gray-100`}
+          >
             <td className="w-min md:w-max">{timeFormator(data[log].time)}</td>
             {/* <td>{data[log].time}</td> */}
             <td className="w-max">{data[log].name}</td>

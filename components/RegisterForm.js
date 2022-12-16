@@ -108,6 +108,7 @@ const RegisterForm = props => {
             />
           </div>
         </CardBody>
+        {/* <button onClick={() => console.log(props.user)}>Click Me</button> */}
       </Card>
     </>
   );

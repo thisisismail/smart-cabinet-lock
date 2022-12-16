@@ -150,6 +150,7 @@ const Registration = () => {
         message={status.text}
         alertColor={status.color}
       />
+      
     </>
   );
 };
