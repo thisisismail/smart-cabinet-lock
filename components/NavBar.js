@@ -59,8 +59,14 @@ const NavBar = () => {
         <div className="border-0 md:hidden md:mr-0 -mr-5">
           <DropDownMenu navLinks={navLinks} userInfo={displayName} />
         </div>
-        <div className="flex flex-row border-0 w-full items-center justify-center gap-8 absolute left-0">{menu}</div>
-        <div className={`hidden ${!uid && 'absolute'} md:block relative z-50`}>
+        <div className="flex flex-row border-0 w-full items-center justify-center gap-8 absolute left-0">
+          {menu}
+        </div>
+        <div
+          className={`hidden ${
+            !uid && 'absolute'
+          } md:block relative z-50 border-0 w-40`}
+        >
           {uid && <UserInfo displayName={displayName} />}
         </div>
       </header>

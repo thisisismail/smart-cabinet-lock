@@ -23,10 +23,11 @@ const UserInfo = props => {
     >
       <MenuHandler>
         <div
-          style={{ minWidth: 200, maxWidth: 300 }}
-          className={`${linkStyle} w-min border-0 h-full flex items-center justify-end cursor-pointer`}
+          className={`${linkStyle} border-0 h-full flex items-center justify-start cursor-pointer w-40`}
         >
-          {props.displayName}
+          <p className="border-0 border-red-200 block w-40 truncate">
+            {props.displayName}
+          </p>
         </div>
       </MenuHandler>
       <MenuList className="hidden md:block bg-white rounded-xl border-0 rounded-t-none md:rounded-t-xl mt-0 drop-shadow-xl relative z-40 w-max">
